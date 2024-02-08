@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio with Tailwind CSS</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="font-sans antialiased bg-gray-100">
+    <header class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl">My Portfolio</h1>
+            <nav>
+                <a href="#" class="text-xl mx-2">Home</a>
+                <a href="#" class="text-xl mx-2">About</a>
+                <a href="#" class="text-xl mx-2">Projects</a>
+                <a href="#" class="text-xl mx-2">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container mx-auto py-8">
+        <section id="about" class="mb-8">
+            <h2 class="text-2xl mb-4">About Me</h2>
+            <p class="text-lg">I'm a passionate web developer with expertise in HTML, CSS, JavaScript, and various frameworks like React and Vue.js. I love building beautiful and functional websites.</p>
+        </section>
+        <section id="projects" class="mb-8">
+            <h2 class="text-2xl mb-4">Projects</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="text-lg font-semibold mb-2">Project 1</h3>
+                    <p>Description of project 1.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="text-lg font-semibold mb-2">Project 2</h3>
+                    <p>Description of project 2.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="text-lg font-semibold mb-2">Project 3</h3>
+                    <p>Description of project 3.</p>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <h2 class="text-2xl mb-4">Contact Me</h2>
+            <form id="contact-form" class="flex flex-col sm:flex-row">
+                <input type="text" placeholder="Your Name" class="px-4 py-2 mb-2 sm:mr-2 rounded-md">
+                <input type="email" placeholder="Your Email" class="px-4 py-2 mb-2 sm:mr-2 rounded-md">
+                <textarea placeholder="Your Message" class="px-4 py-2 mb-2 rounded-md"></textarea>
+                <button type="submit" class="px-4 py-2 bg-gray-800 text-white rounded-md self-start">Send Message</button>
+            </form>
+        </section>
+    </main>
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
