@@ -324,10 +324,13 @@ h3, h4 {
   color: var(--color-white);
 }
 
-@media(hover :hover) { 
+@media (min-width: 768px) {
   .about {
     background-attachment: fixed;
   }
+}
+
+@media(hover :hover) { 
   .button:hover .hover-text {
     width: 100%;
     filter: drop-shadow(0 0 23px var(--animation-color))
