@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Manuel Ferrer</title>
+    <link rel="icon" href="manuferrer.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,9 +18,9 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="#">Mi Portafolio</a>
+                <a class="navbar-brand" href="#">Manuel<strong>Ferrer</strong></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -30,9 +31,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#projects">Proyectos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contact">Contacto</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="https://www.linkedin.com/in/manuferrer/" target="_blank">LinkedIn</a>
@@ -51,15 +49,22 @@
       <div class="about-content">
         <div class="about-text">
           <h2>Sobre mí</h2>
-          <p>¡Hola! Soy Manuel Ferrer, un apasionado Frontend Developer explorando oportunidades para contribuir a emocionantes proyectos de desarrollo. Me especializo en tecnologías como React y Angular, creando soluciones creativas y eficientes en el desarrollo frontend. A lo largo de mi carrera, me he sumergido en proyectos que miden la satisfacción del cliente, destacando por diseñar interfaces web atractivas y funcionales. Con un sólido dominio de lenguajes como C#, TypeScript y JavaScript, así como experiencia en bases de datos como SQL Server y MongoDB, estoy listo para enfrentar desafíos frontend con un enfoque integral. Me encanta sumarme a equipos dinámicos y contribuir en entornos frontend-backend.</p>
+          <p>
+            ¡Hola! Soy Manuel Ferrer, un Frontend Developer especializado en React, Angular y otras tecnologías. Con habilidades en C#, TypeScript, JavaScript, SQL Server y MongoDB, estoy listo para enfrentar desafíos frontend con un enfoque integral y contribuir en equipos frontend-backend.</p>
           <div class="about-stack">
-            <img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white" alt="C#">
-            <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="Angular">
-            <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
-            <img src="https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=amazon-dynamodb&logoColor=white" alt="SQL">
-            <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB">
+            <img alt="React" src="https://img.shields.io/badge/-React-blue?style=flat-square&logo=react&logoColor=white">
+            <img alt="Angular" src="https://img.shields.io/badge/-Angular-red?style=flat-square&logo=angular&logoColor=white">
+            <img alt="C#" src="https://img.shields.io/badge/-C%23-purple?style=flat-square&logo=c-sharp&logoColor=white">
+            <img alt="TypeScript" src="https://img.shields.io/badge/-TypeScript-blue?style=flat-square&logo=typescript&logoColor=white">
+            <img alt="JavaScript" src="https://img.shields.io/badge/-JavaScript-yellow?style=flat-square&logo=javascript&logoColor=white">
+            <img alt="SQL Server" src="https://img.shields.io/badge/-SQL%20Server-blue?style=flat-square&logo=microsoft-sql-server&logoColor=white">
+            <img alt="MongoDB" src="https://img.shields.io/badge/-MongoDB-green?style=flat-square&logo=mongodb&logoColor=white">
           </div>
-          <a href="ManuelFerrerCV.pdf" download class="btn btn-primary">Descargar CV</a>
+          <button class="button" id="downloadButton">
+            <span class="actual-text">Descargar&nbsp;CV</span>
+            <span aria-hidden="true" class="hover-text">Descargar&nbsp;CV</span>
+          </button>          
+          <a href="ManuelFerrerCV.pdf" download id="downloadLink" style="display: none;">Descargar CV</a>       
         </div>
       </div>
     </div>
@@ -68,7 +73,7 @@
     <div class="container">
       <h2>Proyectos</h2>
       <div class="about-text">
-        <p>Descubre algunos de los proyectos que he creado en mi tiempo libre. Desde aplicaciones web hasta experimentos en 3D. Siéntete libre de explorar y probar las demos en vivo.</p>
+        <p>Estos son algunos de los proyectos que he recientemente. Desde aplicaciones web hasta experimentos en 3D.</p>
       </div>
       <div class="row">
         <div class="col-12 col-md-4">
@@ -79,17 +84,18 @@
             <div class="stack-utilizado">
               <h4>Stack utilizado:</h4>
               <div class="about-stack">
-                <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="Angular">
-                <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap">
-                <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
-                <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
-                <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
-                <img src="https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white" alt="Cypress">
+                <img src="https://img.shields.io/badge/Angular-DD0031?style=flat-square&logo=angular&logoColor=white" alt="Angular">
+                <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=flat-square&logo=bootstrap&logoColor=white" alt="Bootstrap">
+                <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5">
+                <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3">
+                <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript">
+                <img src="https://img.shields.io/badge/Cypress-17202C?style=flat-square&logo=cypress&logoColor=white" alt="Cypress">
+                <img src="https://img.shields.io/badge/-Angular_Material-purple?style=flat-square&logo=angular&logoColor=white" alt="Angular Material">
               </div>
             </div>
             <div class="btn-container">
-              <a href="https://github.com/ManuFerrer094/NgCountries-Angular-SPA" class="btn btn-primary" target="_blank">Github</a>
-              <a href="https://ngcountries.netlify.app/" class="btn btn-primary" target="_blank">Demo</a>
+              <a href="https://github.com/ManuFerrer094/NgCountries-Angular-SPA" class="btn project-button" target="_blank">Github</a>
+              <a href="https://ngcountries.netlify.app/" class="btn project-button" target="_blank">Demo</a>
             </div>
           </div>
         </div>
@@ -101,16 +107,17 @@
             <div class="stack-utilizado">
               <h4>Stack utilizado:</h4>
               <div class="about-stack">
-                <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="Angular">
-                <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js">
-                <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
-                <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
-                <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+                <img src="https://img.shields.io/badge/Angular-DD0031?style=flat-square&logo=angular&logoColor=white" alt="Angular">
+                <img src="https://img.shields.io/badge/Node.js-43853D?style=flat-square&logo=node.js&logoColor=white" alt="Node.js">
+                <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5">
+                <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3">
+                <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript">
+                <img src="https://img.shields.io/badge/-Angular_Material-purple?style=flat-square&logo=angular&logoColor=white" alt="Angular Material">
               </div>
             </div>
             <div class="btn-container">
-              <a href="https://github.com/ManuFerrer094/qr-front" class="btn btn-primary" target="_blank">Github</a>
-              <a href="https://ng-qr-generator.netlify.app/" class="btn btn-primary" target="_blank">Demo</a>
+              <a href="https://github.com/ManuFerrer094/qr-front" class="btn project-button" target="_blank">Github</a>
+              <a href="https://ng-qr-generator.netlify.app/" class="btn project-button" target="_blank">Demo</a>
             </div>
           </div>
         </div>
@@ -122,15 +129,16 @@
             <div class="stack-utilizado">
               <h4>Stack utilizado:</h4>
               <div class="about-stack">
-              <img src="https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white" alt="Three.js">
-              <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
-              <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
-              <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+              <img src="https://img.shields.io/badge/Three.js-000000?style=flat-square&logo=three.js&logoColor=white" alt="Three.js">
+              <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5">
+              <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3">
+              <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript">
+              <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=flat-square&logo=bootstrap&logoColor=white" alt="Bootstrap">
               </div>
             </div>
             <div class="btn-container">
-              <a href="https://github.com/ManuFerrer094/threejs" class="btn btn-primary" target="_blank">Github</a>
-              <a href="https://threejs-text-3d.netlify.app/" class="btn btn-primary" target="_blank">Demo</a>
+              <a href="https://github.com/ManuFerrer094/threejs" class="btn project-button" target="_blank">Github</a>
+              <a href="https://threejs-text-3d.netlify.app/" class="btn project-button" target="_blank">Demo</a>
             </div>
           </div>
         </div>
@@ -139,9 +147,10 @@
   </section>
   <footer>
     <div class="container">
-      <p>&copy; 2024 Tu Nombre</p>
+      <p>&copy; 2024 <a href="https://www.linkedin.com/in/manuferrer/" target="_blank" class="navbar-brand" href="#">Manuel<strong>Ferrer</strong></a></p>
     </div>
   </footer>    
   <script src="scroll-animation.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
