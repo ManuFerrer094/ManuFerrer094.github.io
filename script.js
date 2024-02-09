@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (window.innerWidth >= screenWidthThreshold) {
         window.addEventListener('mousemove', function(e) {
-            if (e.clientY < 50) {
+            if (e.clientY < 1) {
                 modal.style.display = 'flex';
             }
         });
