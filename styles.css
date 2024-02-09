@@ -113,17 +113,6 @@ h3, h4 {
   padding: 0 15px;
 }
 
-.about {
-  position: relative; 
-  background-image: url('manuelferrer.jpg');
-  background-size: cover;
-  background-position: center;
-  padding: 6%;
-  color: var(--color-white);
-  background-attachment: fixed;
-}
-
-
 .about::after {
   content: ''; 
   position: absolute;
@@ -326,7 +315,19 @@ h3, h4 {
   color: var(--color-white) !important;
 }
 
-@media(hover :hover) {
+.about {
+  position: relative; 
+  background-image: url('manuelferrer.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 6%;
+  color: var(--color-white);
+}
+
+@media(hover :hover) { 
+  .about {
+    background-attachment: fixed;
+  }
   .button:hover .hover-text {
     width: 100%;
     filter: drop-shadow(0 0 23px var(--animation-color))
