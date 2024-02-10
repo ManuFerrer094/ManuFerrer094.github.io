@@ -317,7 +317,7 @@ h3, h4 {
 
 .about {
   position: relative; 
-  background-image: url('manuelferrer.jpg');
+  background-image: url('../images/manuelferrer.jpg');
   background-size: cover;
   background-position: center;
   padding: 6%;
