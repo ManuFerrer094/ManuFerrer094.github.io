@@ -162,7 +162,7 @@ h3, h4 {
 
 
 .projects {
-  padding: 100px 0;
+  padding: 5% 0 !important;
 }
 
 .projects h2 {
@@ -429,4 +429,118 @@ footer p {
 
 .project-container {
   padding-bottom: calc(var(--bs-gutter-x) * 1);
+}
+
+#experience.experiences {
+  padding: 5% 0;
+  padding-bottom: 0;
+}
+
+#experience.experiences h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+#experience.experiences .project-container {
+  padding-bottom: 0;
+}
+
+#experience.experiences .nav-tabs {
+  border-bottom: none;
+  justify-content: center;
+}
+
+#experience.experiences .nav-item {
+  margin-bottom: 0;
+}
+
+#experience.experiences .nav-link {
+  background-color: transparent;
+  border: none;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 0 20px;
+  padding: 15px 0;
+}
+
+#experience.experiences .nav-link.active {
+  border-bottom: 3px solid var(--color-primary);
+}
+
+#experience.experiences .nav-link:hover {
+  background-color: transparent;
+  color: var(--color-primary);
+}
+
+#experience.experiences .tab-content {
+  border: none;
+}
+
+#experience.experiences .tab-pane {
+  padding: 20px;
+}
+
+#experience.experiences .tab-pane h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+#experience.experiences .tab-pane p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+#experience.experiences .tab-content {
+  border: none;
+}
+
+#experience.experiences .tab-pane {
+  padding: 20px;
+}
+
+#experience.experiences .tab-pane h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#experience.experiences .tab-pane p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+#experience.experiences .tab-pane span {
+  text-align: center;
+  font-size: 1.5rem;
+  display: block;
+  text-align: center;
+}
+
+#experience.experiences .tab-pane ul {
+  margin-bottom: 20px;
+}
+
+#experience.experiences .tab-pane ul li {
+  margin-bottom: 10px;
+}
+
+.date {
+  display: inline !important;
+  text-align: center;
+  font-size: 1.5rem;
+  display: block;
+  text-align: center;
+}
+
+#currentYear {
+  display: inline !important;
+  text-align: center;
+  font-size: 1.5rem;
+  display: block;
+  text-align: center;
 }
