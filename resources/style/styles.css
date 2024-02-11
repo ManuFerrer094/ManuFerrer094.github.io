@@ -426,3 +426,7 @@ footer p {
     margin-bottom: 10%;
   }
 }
+
+.project-container {
+  padding-bottom: calc(var(--bs-gutter-x) * 1);
+}
