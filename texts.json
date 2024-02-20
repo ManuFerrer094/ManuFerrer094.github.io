@@ -1,0 +1,288 @@
+{
+  "title": "Manuel Ferrer",
+  "favicon": "./resources/images/manuferrer.ico",
+  "buttons": {
+    "downloadCV": "Descargar CV"
+  },
+  "downloadCVButton": {
+    "text": "Descargar&nbsp;CV",
+    "link": "./resources/downloads/ManuelFerrerCv.pdf",
+    "ariaHidden": "true"
+  },
+  "header": {
+    "navbarBrand": "Manuel<strong>Ferrer</strong>",
+    "menuItems": [
+      {
+        "text": "Sobre mí",
+        "link": "#about"
+      },
+      {
+        "text": "Experiencia",
+        "link": "#experience"
+      },
+      {
+        "text": "Proyectos",
+        "link": "#projects"
+      },
+      {
+        "text": "LinkedIn",
+        "link": "https://www.linkedin.com/in/manuferrer/",
+        "target": "_blank"
+      },
+      {
+        "text": "GitHub",
+        "link": "https://github.com/ManuFerrer094",
+        "target": "_blank"
+      }
+    ]
+  },
+  "about": {
+    "title": "Sobre mí",
+    "description": "Soy un desarrollador de software apasionado por crear soluciones innovadoras y resolver desafíos técnicos. Mi experiencia abarca el desarrollo web, aplicaciones móviles y más.",
+    "stack": [
+      {
+        "name": "React",
+        "image": "https://img.shields.io/badge/-React-blue?style=flat-square&logo=react&logoColor=white"
+      },
+      {
+        "name": "Angular",
+        "image": "https://img.shields.io/badge/-Angular-red?style=flat-square&logo=angular&logoColor=white"
+      },
+      {
+        "name": "C#",
+        "image": "https://img.shields.io/badge/-C%23-purple?style=flat-square&logo=c-sharp&logoColor=white"
+      },
+      {
+        "name": "TypeScript",
+        "image": "https://img.shields.io/badge/-TypeScript-blue?style=flat-square&logo=typescript&logoColor=white"
+      },
+      {
+        "name": "JavaScript",
+        "image": "https://img.shields.io/badge/-JavaScript-yellow?style=flat-square&logo=javascript&logoColor=white"
+      },
+      {
+        "name": "SQL Server",
+        "image": "https://img.shields.io/badge/-SQL%20Server-blue?style=flat-square&logo=microsoft-sql-server&logoColor=white"
+      },
+      {
+        "name": "MongoDB",
+        "image": "https://img.shields.io/badge/-MongoDB-green?style=flat-square&logo=mongodb&logoColor=white"
+      }
+    ]
+  },
+  "experiences": {
+    "title": "Experiencia",
+    "description": "Un vistazo rápido a algunos de los desafíos y proyectos en los que he tenido el privilegio de participar. Desde el desarrollo de software hasta la creación de soluciones web.",
+    "items": [
+      {
+        "name": "IFS",
+        "role": "Software Developer",
+        "date": "2019-<span id=\"currentYear\"></span>",
+        "description": "\"Como Desarrollador de Software en IFS, mi objetivo es brindar desarrollo y mantenimiento de soluciones web para la medición y análisis de la satisfacción del cliente. Destaco por mi experiencia en lenguajes como C# y TypeScript, así como por mi capacidad para implementar innovadores frameworks como Angular y React.\"",
+        "stack": [
+          {
+            "name": "Angular",
+            "image": "https://img.shields.io/badge/-Angular-red?style=flat-square&logo=angular&logoColor=white"
+          },
+          {
+            "name": "React",
+            "image": "https://img.shields.io/badge/-React-blue?style=flat-square&logo=react&logoColor=white"
+          },
+          {
+            "name": "C#",
+            "image": "https://img.shields.io/badge/-C%23-purple?style=flat-square&logo=c-sharp&logoColor=white"
+          },
+          {
+            "name": "TypeScript",
+            "image": "https://img.shields.io/badge/-TypeScript-blue?style=flat-square&logo=typescript&logoColor=white"
+          },
+          {
+            "name": "SQL Server",
+            "image": "https://img.shields.io/badge/-SQL%20Server-blue?style=flat-square&logo=microsoft-sql-server&logoColor=white"
+          },
+          {
+            "name": "MongoDB",
+            "image": "https://img.shields.io/badge/-MongoDB-green?style=flat-square&logo=mongodb&logoColor=white"
+          }
+        ]
+      },
+      {
+        "name": "Merlos",
+        "role": "Frontend Developer",
+        "date": "2017-2019",
+        "description": "\"Durante mi etapa como Frontend Developer en Merlos, me enfoqué en mejorar la experiencia del usuario y funcionalidad en proyectos Wordpress y actualizar proyectos de AngularJS a versiones más recientes, como Angular 2 y posteriores.\"",
+        "stack": [
+          {
+            "name": "PHP",
+            "image": "https://img.shields.io/badge/-PHP-purple?style=flat-square&logo=php&logoColor=white"
+          },
+          {
+            "name": "SQL Server",
+            "image": "https://img.shields.io/badge/-SQL%20Server-blue?style=flat-square&logo=microsoft-sql-server&logoColor=white"
+          },
+          {
+            "name": "MySQL",
+            "image": "https://img.shields.io/badge/-MySQL-blue?style=flat-square&logo=mysql&logoColor=white"
+          },
+          {
+            "name": "Angular",
+            "image": "https://img.shields.io/badge/-Angular-red?style=flat-square&logo=angular&logoColor=white"
+          },
+          {
+            "name": "WordPress",
+            "image": "https://img.shields.io/badge/-WordPress-blue?style=flat-square&logo=wordpress&logoColor=white"
+          },
+          {
+            "name": "WooCommerce",
+            "image": "https://img.shields.io/badge/-WooCommerce-blue?style=flat-square&logo=woocommerce&logoColor=white"
+          }
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "title": "Proyectos",
+    "description": "Estos son algunos de los proyectos en los que he estado trabajando recientemente en mi tiempo libre, abarcando una variedad de áreas que van desde aplicaciones web hasta experimentos en 3D.",
+    "items": [
+      {
+        "name": "Ng Countries",
+        "image": "./resources/images/ngCountries.png",
+        "description": "Una SPA desarrollada en Angular 15 que se conecta a la API RestCountries para mostrar información detallada sobre distintos países. La aplicación ofrece funcionalidades como búsqueda y filtrado por región, así como detalles específicos de cada país, como su capital, población, área, y más.",
+        "stack": [
+          {
+            "name": "Angular",
+            "image": "https://img.shields.io/badge/Angular-DD0031?style=flat-square&logo=angular&logoColor=white"
+          },
+          {
+            "name": "Bootstrap",
+            "image": "https://img.shields.io/badge/Bootstrap-563D7C?style=flat-square&logo=bootstrap&logoColor=white"
+          },
+          {
+            "name": "HTML5",
+            "image": "https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"
+          },
+          {
+            "name": "CSS3",
+            "image": "https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"
+          },
+          {
+            "name": "Cypress",
+            "image": "https://img.shields.io/badge/Cypress-17202C?style=flat-square&logo=cypress&logoColor=white"
+          },
+          {
+            "name": "Angular Material",
+            "image": "https://img.shields.io/badge/-Angular_Material-purple?style=flat-square&logo=angular&logoColor=white"
+          },
+          {
+            "name": "Netlify",
+            "image": "https://img.shields.io/badge/Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white"
+          }
+        ],
+        "githubLink": "https://github.com/ManuFerrer094/NgCountries-Angular-SPA",
+        "demoLink": "https://ngcountries.netlify.app/"
+      },
+      {
+        "name": "Ng Qr Generator",
+        "image": "./resources/images/ngQr.png",
+        "description": "Una web desarrollada en Angular 17 que permite generar diferentes códigos QR. La aplicación se conecta a una API propia programada en Node.JS para generar los códigos QR dependiendo del endpoint a partir del texto ingresado por el usuario.",
+        "stack": [
+          {
+            "name": "Angular",
+            "image": "https://img.shields.io/badge/Angular-DD0031?style=flat-square&logo=angular&logoColor=white"
+          },
+          {
+            "name": "Node.js",
+            "image": "https://img.shields.io/badge/Node.js-43853D?style=flat-square&logo=node.js&logoColor=white"
+          },
+          {
+            "name": "HTML5",
+            "image": "https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"
+          },
+          {
+            "name": "CSS3",
+            "image": "https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"
+          },
+          {
+            "name": "Angular Material",
+            "image": "https://img.shields.io/badge/-Angular_Material-purple?style=flat-square&logo=angular&logoColor=white"
+          },
+          {
+            "name": "Postman",
+            "image": "https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white"
+          },
+          {
+            "name": "Netlify",
+            "image": "https://img.shields.io/badge/Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white"
+          }
+        ],
+        "githubLink": "https://github.com/ManuFerrer094/qr-front",
+        "demoLink": "https://ng-qr-generator.netlify.app/"
+      },
+      {
+        "name": "QR API",
+        "image": "./resources/images/qr.png",
+        "description": "Esta API permite generar códigos QR para diferentes propósitos. Se trata de un proyecto sencillo con unos cuantos endpoints para resolver las peticiones más comunes del mercado de los códigos QR.",
+        "stack": [
+          {
+            "name": "Node.js",
+            "image": "https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white"
+          },
+          {
+            "name": "Express",
+            "image": "https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white"
+          },
+          {
+            "name": "Vercel",
+            "image": "https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white"
+          },
+          {
+            "name": "Postman",
+            "image": "https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white"
+          },
+          {
+            "name": "Bootstrap",
+            "image": "https://img.shields.io/badge/Bootstrap-563D7C?style=flat-square&logo=bootstrap&logoColor=white"
+          }
+        ],
+        "githubLink": "https://github.com/ManuFerrer094/qr-api",
+        "demoLink": "https://qrapi-rho.vercel.app/"
+      },
+      {
+        "name": "Text Sculptor ThreeJS",
+        "image": "./resources/images/textsculptor.png",
+        "description": "Un visor de texto tridimensional desarrollado con Three.js, una biblioteca JavaScript para la creación de gráficos en 3D en el navegador. Este proyecto muestra cómo renderizar texto en un entorno 3D utilizando Three.js, permitiendo al usuario interactuar con el texto y explorar diferentes perspectivas.",
+        "stack": [
+          {
+            "name": "Three.js",
+            "image": "https://img.shields.io/badge/Three.js-000000?style=flat-square&logo=three.js&logoColor=white"
+          },
+          {
+            "name": "HTML5",
+            "image": "https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"
+          },
+          {
+            "name": "CSS3",
+            "image": "https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"
+          },
+          {
+            "name": "JavaScript",
+            "image": "https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"
+          },
+          {
+            "name": "Bootstrap",
+            "image": "https://img.shields.io/badge/Bootstrap-563D7C?style=flat-square&logo=bootstrap&logoColor=white"
+          },
+          {
+            "name": "Netlify",
+            "image": "https://img.shields.io/badge/Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white"
+          }
+        ],
+        "githubLink": "https://github.com/ManuFerrer094/threejs",
+        "demoLink": "https://textsculptor3d.netlify.app/"
+      }
+    ]
+  },
+  "footer": {
+    "text": "&copy; 2024 <a href='https://www.linkedin.com/in/manuferrer/' target='_blank' class='navbar-brand'>Manuel<strong>Ferrer</strong></a>"
+  }
+}
