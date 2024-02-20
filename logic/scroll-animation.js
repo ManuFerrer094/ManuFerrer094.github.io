@@ -17,9 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     window.addEventListener('scroll', checkPosition);
     checkPosition();
-});
 
-document.addEventListener('DOMContentLoaded', function() {
     const buttons = document.querySelectorAll('.btn');
     
     buttons.forEach(button => {
@@ -32,4 +30,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
