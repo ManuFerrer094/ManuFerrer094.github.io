@@ -42,11 +42,24 @@ fetch('texts.json')
 
     updateElementHTML('footer .container', data.footer.text);
 
+    const generateShieldURL = (technology) => {
+      const colors = ['brightgreen', 'green', 'yellowgreen', 'yellow', 'orange', 'red', 'blue', 'lightgrey'];
+      const randomIndex = Math.floor(Math.random() * colors.length);
+      const randomColor = colors[randomIndex];
+      colors.splice(randomIndex, 1);
+      return `https://img.shields.io/badge/${technology}-informational?style=for-the-badge&logo=${technology}&logoColor=white&color=${randomColor}`;
+    };      
+
+    const updateStack = (sectionId, stack) => {
+      const stackContainer = document.querySelector(`#${sectionId} .about-stack`);
+      stackContainer.innerHTML = stack.map(tech => `<img src="${generateShieldURL(tech)}" alt="${tech}">`).join('');
+    };
+
     const aboutData = data.about;
     updateElementContent('#about h2', aboutData.title);
     updateElementContent('#about .about-text p', aboutData.description);
     updateElementContent('#about .button .actual-text', data.buttons.downloadCV);
-    updateElementHTML('#about .about-stack', aboutData.stack.map(tech => `<img src="${tech.image}" alt="${tech.name}">`).join(''));
+    updateStack('about', aboutData.stack);
 
     const experiencesData = data.experiences;
     updateElementContent('#experience h2', experiencesData.title);
@@ -79,7 +92,7 @@ fetch('texts.json')
         <p>${experience.description}</p>
         <div class="stack-utilizado">
           <h4>Stack utilizado:</h4>
-          <div class="about-stack">${experience.stack.map(tech => `<img src="${tech.image}" alt="${tech.name}">`).join('')}</div>
+          <div class="about-stack">${experience.stack.map(tech => `<img src="${generateShieldURL(tech)}" alt="${tech}">`).join('')}</div>
         </div>`;
       tabContent.appendChild(tabPane);
     });
@@ -90,7 +103,7 @@ fetch('texts.json')
 
     const projectContainer = document.querySelector('#projects .row');
     projectsData.items.forEach(project => {
-      const stackHtml = project.stack.map(tech => `<img src="${tech.image}" alt="${tech.name}">`).join('');
+      const stackHtml = project.stack.map(tech => `<img src="${generateShieldURL(tech)}" alt="${tech}">`).join('');
       const projectHtml = `
         <div class="col-12 col-md-6 project-container">
           <div class="project">
