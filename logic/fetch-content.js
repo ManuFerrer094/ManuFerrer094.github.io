@@ -13,6 +13,28 @@ fetch('texts.json')
       document.querySelector(selector).innerHTML = html;
     };
 
+    const generateRandomColor = () => {
+      const colors = ['brightgreen', 'green', 'yellowgreen', 'yellow', 'orange', 'red', 'blue', 'lightgrey'];
+      const randomIndex = Math.floor(Math.random() * colors.length);
+      return colors.splice(randomIndex, 1)[0];
+    };
+
+    const generateShieldURL = (technology) => {
+      const randomColor = generateRandomColor();
+      return `https://img.shields.io/badge/${technology}-informational?style=for-the-badge&logo=${technology}&logoColor=white&color=${randomColor}`;
+    };      
+
+    const updateStack = (sectionId, stack) => {
+      const stackContainer = document.querySelector(`#${sectionId} .about-stack`);
+      const uniqueStack = Array.from(new Set(stack)); // Remove duplicate technologies
+      stackContainer.innerHTML = uniqueStack.map(tech => `<img src="${generateShieldURL(tech)}" alt="${tech}">`).join('');
+    };
+
+    const updateBackgroundImage = (sectionId, imageUrl) => {
+      const section = document.getElementById(sectionId);
+      section.style.backgroundImage = `url('${imageUrl}')`;
+    };
+
     updateElementContent('title', data.title);
     updateLinkHref("link[rel='icon']", data.favicon);
 
@@ -42,24 +64,12 @@ fetch('texts.json')
 
     updateElementHTML('footer .container', data.footer.text);
 
-    const generateShieldURL = (technology) => {
-      const colors = ['brightgreen', 'green', 'yellowgreen', 'yellow', 'orange', 'red', 'blue', 'lightgrey'];
-      const randomIndex = Math.floor(Math.random() * colors.length);
-      const randomColor = colors[randomIndex];
-      colors.splice(randomIndex, 1);
-      return `https://img.shields.io/badge/${technology}-informational?style=for-the-badge&logo=${technology}&logoColor=white&color=${randomColor}`;
-    };      
-
-    const updateStack = (sectionId, stack) => {
-      const stackContainer = document.querySelector(`#${sectionId} .about-stack`);
-      stackContainer.innerHTML = stack.map(tech => `<img src="${generateShieldURL(tech)}" alt="${tech}">`).join('');
-    };
-
     const aboutData = data.about;
     updateElementContent('#about h2', aboutData.title);
     updateElementContent('#about .about-text p', aboutData.description);
     updateElementContent('#about .button .actual-text', data.buttons.downloadCV);
     updateStack('about', aboutData.stack);
+    updateBackgroundImage('about', aboutData.backgroundImageUrl);
 
     const experiencesData = data.experiences;
     updateElementContent('#experience h2', experiencesData.title);
