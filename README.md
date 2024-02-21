@@ -23,6 +23,7 @@ Este proyecto consiste en una página web dinámica cuyo contenido es generado a
 2. Abre el archivo `texts.json` y modifica el contenido según tus preferencias. Este archivo contiene la información que se mostrará en la página web.
 3. Asegúrate de que el texto en `buttons.downloadCV` coincida exactamente con el texto en `downloadCVButton.text`, incluidos los espacios con `&nbsp;`.
 4. Abre el archivo `index.html` en tu navegador web para ver la página web generada.
+5. (Opcional) Crea un repositorio con tu nombre de usuario seguido de `.github.io` para tenerlo publicado como una página web.
 
 ## Contribución
 
