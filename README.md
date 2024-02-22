@@ -1,4 +1,4 @@
-# Web Generada por JSON
+# Web generada via JSON
 
 Este proyecto consiste en una página web dinámica cuyo contenido es generado a partir de un archivo JSON. La idea es proporcionar una estructura flexible y fácil de mantener para la página web, permitiendo que el contenido se actualice sin necesidad de modificar el código HTML o CSS.
 
@@ -10,14 +10,14 @@ Este proyecto consiste en una página web dinámica cuyo contenido es generado a
 
 - **Personalización**: El proyecto permite personalizar fácilmente diversos aspectos de la página, como el título, el favicon, los enlaces de navegación, el contenido de las secciones, etc., a través del archivo JSON.
 
-## Tecnologías Utilizadas
+## Tecnologías utilizadas
 
 [![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/es/docs/Web/HTML)
 [![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/es/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/es/docs/Web/JavaScript)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
 
-## Instrucciones de Uso
+## Instrucciones de uso
 
 1. Clona este repositorio en tu máquina local.
 2. Abre el archivo `texts.json` y modifica el contenido y los archivos a mostrar y descargar según tus preferencias. Este archivo contiene la información que se mostrará en la página web.
