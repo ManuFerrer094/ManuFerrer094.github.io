@@ -1,5 +1,6 @@
 {
   "title": "Manuel Ferrer",
+  "githubUsername": "ManuFerrer094",
   "favicon": "./resources/images/manuferrer.ico",
   "buttons": {
     "downloadCV": "Descargar CV"
@@ -59,44 +60,6 @@
         "date": "2017-2019",
         "description": "\"Durante mi etapa como Frontend Developer en Merlos, me enfoqué en mejorar la experiencia del usuario y funcionalidad en proyectos Wordpress y actualizar proyectos de AngularJS a versiones más recientes, como Angular 2 y posteriores.\"",
         "stack": ["Angular", "Wordpress", "PHP", "HTML5", "CSS3"]
-      }
-    ]
-  },
-  "projects": {
-    "title": "Proyectos",
-    "description": "Estos son algunos de los proyectos en los que he estado trabajando recientemente en mi tiempo libre, abarcando una variedad de áreas que van desde aplicaciones web hasta experimentos en 3D.",
-    "items": [
-      {
-        "name": "Ng Countries",
-        "image": "./resources/images/ngCountries.png",
-        "description": "Una SPA desarrollada en Angular 15 que se conecta a la API RestCountries para mostrar información detallada sobre distintos países. La aplicación ofrece funcionalidades como búsqueda y filtrado por región, así como detalles específicos de cada país, como su capital, población, área, y más.",
-        "stack": ["Angular", "Angular Material", "Netlify", "Bootstrap"],
-        "githubLink": "https://github.com/ManuFerrer094/NgCountries-Angular-SPA",
-        "demoLink": "https://ngcountries.netlify.app/"
-      },
-      {
-        "name": "Ng Qr Generator",
-        "image": "./resources/images/ngQr.png",
-        "description": "Una web desarrollada en Angular 17 que permite generar diferentes códigos QR. La aplicación se conecta a una API propia programada en Node.JS para generar los códigos QR dependiendo del endpoint a partir del texto ingresado por el usuario.",
-        "stack": ["Angular", "Angular Material", "Netlify", "NodeJS"],
-        "githubLink": "https://github.com/ManuFerrer094/qr-front",
-        "demoLink": "https://ng-qr-generator.netlify.app/"
-      },
-      {
-        "name": "QR API",
-        "image": "./resources/images/qr.png",
-        "description": "Esta API permite generar códigos QR para diferentes propósitos. Se trata de un proyecto sencillo con unos cuantos endpoints para resolver las peticiones más comunes del mercado de los códigos QR.",
-        "stack": ["NodeJS", "Postman", "Vercel"],
-        "githubLink": "https://github.com/ManuFerrer094/qr-api",
-        "demoLink": "https://qrapi-rho.vercel.app/"
-      },
-      {
-        "name": "Text Sculptor ThreeJS",
-        "image": "./resources/images/textsculptor.png",
-        "description": "Un visor de texto tridimensional desarrollado con Three.js, una biblioteca JavaScript para la creación de gráficos en 3D en el navegador. Este proyecto muestra cómo renderizar texto en un entorno 3D utilizando Three.js, permitiendo al usuario interactuar con el texto y explorar diferentes perspectivas.",
-        "stack": ["ThreeJS", "HTML5", "CSS3", "Javascript"],
-        "githubLink": "https://github.com/ManuFerrer094/threejs",
-        "demoLink": "https://textsculptor3d.netlify.app/"
       }
     ]
   },
