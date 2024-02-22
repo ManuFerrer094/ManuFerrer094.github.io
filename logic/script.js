@@ -4,6 +4,3 @@ const downloadLink = document.getElementById('downloadLink');
 downloadButton.addEventListener('click', function() {
   downloadLink.click();
 });
-
-var currentYear = new Date().getFullYear();
-
