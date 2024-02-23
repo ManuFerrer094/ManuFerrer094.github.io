@@ -13,7 +13,7 @@
   },
   "about": {
     "title": "Manuel Ferrer",
-    "backgroundImageUrl": "./resources/images/manuelferrer.jpg",
+    "backgroundImageUrl": "./resources/images/about.jpg",
     "description": "Desarrollador de software especializado en el Frontend, con 7 años de experiencia en el desarrollo integral de software.",
     "stack": ["Angular", "React", "CSharp", "TypeScript", "SQL", "MongoDB"]
   },

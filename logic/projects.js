@@ -79,8 +79,8 @@ fetch('./texts.json')
                     <p>${project.description}</p>
                     ${stackHtml}
                     <div class="btn-container">
-                      <a href="${project.githubLink}" class="btn project-button" target="_blank">GitHub</a>
-                      ${project.demoLink ? `<a href="${project.demoLink}" class="btn project-button" target="_blank">Demo</a>` : ''}
+                      <a href="${project.githubLink}" class="btn project-button" target="_blank">GitHub <i class="fa-brands fa-github"></i></a>
+                      ${project.demoLink ? `<a href="${project.demoLink}" class="btn project-button" target="_blank">Demo <i class="fa-solid fa-up-right-from-square"></i></a>` : ''}
                     </div>
                   </div>
                 </div>`;
