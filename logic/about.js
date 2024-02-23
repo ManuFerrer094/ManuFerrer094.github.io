@@ -6,7 +6,6 @@ fetch('texts.json')
     const aboutData = data.about;
     updateElementContent('#about h2', aboutData.title);
     updateElementContent('#about .about-text p', aboutData.description);
-    updateElementContent('#about .button .actual-text', data.buttons.downloadCV);
     updateStack('about', aboutData.stack);
     updateBackgroundImage('about', aboutData.backgroundImageUrl);
   })

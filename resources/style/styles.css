@@ -7,43 +7,7 @@
   --color-white: #fff;
   --color-black: #000;
   --color-shadow: rgba(0, 0, 0, 0.6);
-  --color-link: #00ffff;
-}
-
-/*Ventana emergente*/
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.modal-buttons {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.modal-buttons button {
-  margin: 0 10px;
-  padding: 10px 20px;
-  background-color: #007ACC;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  --color-link: #a2ff00;
 }
 
 #closeModalBtn:hover {
@@ -301,6 +265,20 @@ h3, h4 {
   transition: 400ms;
 }
 
+.btn.paginator-button {
+  background-color: var(--color-primary);
+  outline: 3px var(--color-primary) solid;
+  outline-offset: -3px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--color-text);
+  transition: 400ms;
+}
+
+.btn.paginator-button svg path {
+  transition: 400ms;
+}
+
 .navbar-brand {
   color: var(--color-white) !important;
   transition: color 0.3s ease;
@@ -334,7 +312,7 @@ h3, h4 {
     background-color: #555; 
   }
 
-  .btn.project-button:hover {
+  .btn.project-button:hover, .btn.paginator-button:hover {
     outline: 3px var(--color-link) solid;
     background-color: var(--color-black);
     color: var(--color-white);

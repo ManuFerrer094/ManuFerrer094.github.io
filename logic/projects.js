@@ -89,21 +89,23 @@ fetch('./texts.json')
             });
           };
           
-        const createPaginatorButtons = () => {
-          const totalPages = Math.ceil(projectsData.items.length / projectsPerPage);
-          const paginator = document.querySelector('.paginator');
-          paginator.innerHTML = '';
-          
-          for (let i = 1; i <= totalPages; i++) {
-            const button = document.createElement('button');
-            button.textContent = i;
-            button.addEventListener('click', () => {
-              currentPage = i;
-              displayProjects();
-            });
-            paginator.appendChild(button);
-          }
+          const createPaginatorButtons = () => {
+            const totalPages = Math.ceil(projectsData.items.length / projectsPerPage);
+            const paginator = document.querySelector('.paginator');
+            paginator.innerHTML = '';
+        
+            for (let i = 1; i <= totalPages; i++) {
+                const button = document.createElement('button');
+                button.textContent = i;
+                button.classList.add('btn', 'paginator-button'); // Agregar las clases necesarias
+                button.addEventListener('click', () => {
+                    currentPage = i;
+                    displayProjects();
+                });
+                paginator.appendChild(button);
+            }
         };
+        
 
         displayProjects();
         createPaginatorButtons();

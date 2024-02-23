@@ -2,46 +2,20 @@
   "title": "Manuel Ferrer",
   "githubUsername": "ManuFerrer094",
   "favicon": "./resources/images/manuferrer.ico",
-  "buttons": {
-    "downloadCV": "Descargar CV"
-  },
   "downloadCVButton": {
-    "text": "Descargar&nbsp;CV",
-    "link": "./resources/downloads/ManuelFerrerCv.pdf",
-    "ariaHidden": "true"
+    "link": "./resources/downloads/ManuelFerrerCv.pdf"
   },
   "header": {
-    "navbarBrand": "Manuel<strong>Ferrer</strong>",
-    "menuItems": [
-      {
-        "text": "Sobre mí",
-        "link": "#about"
-      },
-      {
-        "text": "Experiencia",
-        "link": "#experience"
-      },
-      {
-        "text": "Proyectos",
-        "link": "#projects"
-      },
-      {
-        "text": "LinkedIn",
-        "link": "https://www.linkedin.com/in/manuferrer/",
-        "target": "_blank"
-      },
-      {
-        "text": "GitHub",
-        "link": "https://github.com/ManuFerrer094",
-        "target": "_blank"
-      }
-    ]
+    "firstName": "Manuel",
+    "lastName": "Ferrer",
+    "linkedinUrl": "https://www.linkedin.com/in/manuferrer/",
+    "githubUrl": "https://github.com/ManuFerrer094"
   },
   "about": {
     "title": "Manuel Ferrer",
     "backgroundImageUrl": "./resources/images/manuelferrer.jpg",
     "description": "Desarrollador de software especializado en el Frontend, con 7 años de experiencia en el desarrollo integral de software.",
-    "stack": ["Angular", "React", "CSharp", "TypeScript"]
+    "stack": ["Angular", "React", "CSharp", "TypeScript", "SQL", "MongoDB"]
   },
   "experiences": {
     "title": "Experiencia",
@@ -64,6 +38,8 @@
     ]
   },
   "footer": {
-    "text": "&copy; 2024 <a href='https://www.linkedin.com/in/manuferrer/' target='_blank' class='navbar-brand'>Manuel<strong>Ferrer</strong></a>"
+    "url": "https://www.linkedin.com/in/manuferrer/",
+    "firstname": "Manuel",
+    "lastname": "Ferrer"
   }
 }
