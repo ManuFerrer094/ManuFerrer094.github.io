@@ -33,7 +33,7 @@ fetch('texts.json')
         <span class="date-header">${experience.date}</span>
         <p>${experience.description}</p>
         <div class="stack-utilizado">
-          <h4>Stack utilizado:</h4>
+          <h4>Stack</h4>
           <div class="about-stack">${experience.stack.map(tech => `<img src="${generateShieldURL(tech)}" alt="${tech}">`).join('')}</div>
         </div>`;
       tabContent.appendChild(tabPane);

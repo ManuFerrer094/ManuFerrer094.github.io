@@ -277,6 +277,12 @@ h3, h4 {
   cursor: pointer;
   color: var(--color-text);
   transition: 400ms;
+  margin-left: 1%;
+}
+
+.paginator {
+  justify-content: center;
+  display: flex;
 }
 
 .btn.paginator-button svg path {
