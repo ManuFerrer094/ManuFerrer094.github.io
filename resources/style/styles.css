@@ -77,6 +77,15 @@ h3, h4 {
   padding: 0 15px;
 }
 
+@media only screen and (min-width: 1024px) {
+  .web-content {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+}
+
 .about::after {
   content: ''; 
   position: absolute;
@@ -131,11 +140,6 @@ h3, h4 {
   margin-bottom: 20px;
 }
 
-.project h3 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
 .project img {
   max-width: 100%;
   height: auto;
@@ -155,7 +159,7 @@ h3, h4 {
 }
 
 .project h3 {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   margin-bottom: 10px;
 }
 
@@ -506,4 +510,8 @@ footer p {
   font-size: 1.5rem;
   display: block;
   text-align: center;
+}
+
+a#downloadLink {
+  display: inline-block;
 }
