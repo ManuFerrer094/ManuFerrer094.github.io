@@ -150,7 +150,7 @@ h3, h4 {
   max-width: 100%;
   height: auto;
   border-radius: 5px;
-  box-shadow: 0 0 20px var(--color-shadow);
+  filter: drop-shadow(0 0 20px var(--color-shadow));
 }
 
 .project p {
@@ -172,7 +172,7 @@ h3, h4 {
 .project img {
   max-width: 100%;
   border-radius: 5px;
-  box-shadow: 0 0 10px var(--color-shadow);
+  filter: drop-shadow(0 0 20px var(--color-shadow));
 }
 
 .project p {
@@ -186,7 +186,7 @@ h3, h4 {
   justify-content: flex-start;
   background-color: var(--color-white);
   border-radius: 10px;
-  box-shadow: 0 0 20px var(--color-shadow);
+  filter: drop-shadow(0 0 20px var(--color-shadow));
   padding: 20px;
   margin-bottom: 30px;
   height: 100%;
@@ -331,7 +331,7 @@ h3, h4 {
     outline: 3px var(--color-link) solid;
     background-color: var(--color-black);
     color: var(--color-white);
-    box-shadow: 0 0 6px var(--color-shadow);
+    filter: drop-shadow(0 0 6px var(--color-shadow));
   }
 
   .navbar-nav .nav-link:hover {
@@ -360,7 +360,7 @@ h3, h4 {
 .about-stack img {
   max-width: 100%;
   height: auto;
-  box-shadow: 0 0 6px var(--color-shadow);
+  filter: drop-shadow(0 0 6px var(--color-shadow));
   border-radius: 5px;
   margin: 1%;
 }
