@@ -199,7 +199,7 @@ h3, h4 {
 
 .project .btn-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: auto; 
 }
 
@@ -262,6 +262,7 @@ h3, h4 {
   font-weight: 700;
   font-size: 1em;
   transition: 400ms;
+  margin: 1%;
 }
 
 .btn.project-button svg path {
