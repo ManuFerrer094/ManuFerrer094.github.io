@@ -21,9 +21,19 @@ fetch('./texts.json')
         return response.json();
       })
       .then(repos => {
+        repos.sort((a, b) => {
+          if (a.homepage && !b.homepage) {
+            return -1;
+          }
+          if (!a.homepage && b.homepage) {
+            return 1;
+          }
+          return new Date(b.created_at) - new Date(a.created_at);
+        });
+
         const projectsData = {
-          title: "Proyectos propios",
-          description: "Aquí tienes mis proyectos de Github!",
+          title: "Proyectos en Github",
+          description: "Explora algunos de mis proyectos personales y colaborativos en GitHub.",
           items: repos.map(repo => ({
             name: repo.name,
             description: repo.description,
@@ -94,7 +104,6 @@ fetch('./texts.json')
             }
         };
         
-
         displayProjects();
         createPaginatorButtons();
       })

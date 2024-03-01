@@ -14,25 +14,25 @@
   "about": {
     "title": "Manuel Ferrer",
     "backgroundImageUrl": "./resources/images/about.jpg",
-    "description": "Desarrollador de software especializado en el Frontend, con 7 años de experiencia en el desarrollo integral de software.",
+    "description": "Software Developer con más de 7 años de experiencia, especializado en la creación de experiencias excepcionales en el Frontend.",
     "stack": ["Angular", "React", "CSharp", "TypeScript", "SQL", "MongoDB"]
   },
   "experiences": {
     "title": "Experiencia",
-    "description": "Un vistazo rápido a algunos de los desafíos y proyectos en los que he tenido el privilegio de participar. Desde el desarrollo de software hasta la creación de soluciones web.",
+    "description": "Descubre algunos de los emocionantes desafíos y proyectos en los que he participado. Desde la creación de potentes aplicaciones hasta la implementación de soluciones web de vanguardia, mi trayectoria refleja un compromiso constante con la excelencia y la innovación.",
     "items": [
       {
         "name": "IFS",
         "role": "Software Developer",
         "date": "2019-2024",
-        "description": "\"Como Desarrollador de Software en IFS, mi objetivo es brindar desarrollo y mantenimiento de soluciones web para la medición y análisis de la satisfacción del cliente. Destaco por mi experiencia en lenguajes como C# y TypeScript, así como por mi capacidad para implementar innovadores frameworks como Angular y React.\"",
+        "description": "\"En IFS, me dedico a desarrollar soluciones web que elevan la experiencia del usuario y maximizan la satisfacción del cliente. Mi experiencia en lenguajes como C# y TypeScript, junto con mi habilidad para implementar frameworks como Angular y React, me permite crear soluciones a la vanguardia de la tecnología.\"",
         "stack": ["Angular", "CSharp", "SQL", "MongoDB", "TypeScript", "HTML5", "CSS3"]
       },
       {
         "name": "Merlos",
         "role": "Frontend Developer",
         "date": "2017-2019",
-        "description": "\"Durante mi etapa como Frontend Developer en Merlos, me enfoqué en mejorar la experiencia del usuario y funcionalidad en proyectos Wordpress y actualizar proyectos de AngularJS a versiones más recientes, como Angular 2 y posteriores.\"",
+        "description": "\"En Merlos, mi misión era mejorar la experiencia del usuario y la funcionalidad en diversos proyectos, desde plataformas Wordpress hasta la actualización de aplicaciones AngularJS.\"",
         "stack": ["Angular", "Wordpress", "PHP", "HTML5", "CSS3"]
       }
     ]
