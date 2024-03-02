@@ -1,6 +1,12 @@
-const downloadButton = document.getElementById('downloadButton');
-const downloadLink = document.getElementById('downloadLink');
+document.addEventListener("DOMContentLoaded", function() {
+  const myAtropos = Atropos({
+    el: '.atropos-exp',
+  });
 
-downloadButton.addEventListener('click', function() {
-  downloadLink.click();
+  const downloadButton = document.getElementById('downloadButton');
+  const downloadLink = document.getElementById('downloadLink');
+
+  downloadButton.addEventListener('click', function() {
+    downloadLink.click();
+  });
 });
