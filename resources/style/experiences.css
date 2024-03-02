@@ -1,0 +1,88 @@
+.experience {
+    padding: 5% 0;
+    padding-bottom: 0;
+}
+
+.experience h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.experience .project-container {
+    padding-bottom: 0;
+}
+
+.experience .nav-tabs {
+    border-bottom: none;
+    justify-content: center;
+}
+
+.experience .nav-item,
+#experience .nav-link {
+    margin-bottom: 0;
+}
+
+#experience .nav-link {
+    background-color: transparent;
+    border: none;
+    color: var(--color-primary);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 0 20px;
+    padding: 15px 0;
+}
+
+#experience .nav-link.active {
+    border-bottom: 3px solid var(--color-primary);
+}
+
+#experience .nav-link:hover {
+    background-color: transparent;
+    color: var(--color-primary);
+}
+
+.experience .tab-pane h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.experience .tab-pane p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.experience .tab-pane span {
+    text-align: center;
+    font-size: 1.5rem;
+    display: block;
+}
+
+.experience .tab-pane ul {
+    margin-bottom: 20px;
+}
+
+.experience .tab-pane ul li {
+    margin-bottom: 10px;
+}
+
+.stack-utilizado {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    position: relative;
+    bottom: 5%;
+    text-align: center;
+}
+
+@media only screen and (min-width: 1024px) {
+    .experience .tab-content,
+    .experience .tab-pane {
+        border: none;
+        padding: 20px;
+    }
+  }
