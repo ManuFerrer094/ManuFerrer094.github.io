@@ -1,0 +1,74 @@
+.about {
+    position: relative;
+    padding: 6%;
+    color: var(--color-white);
+    background: url('') no-repeat center center/cover;
+  }
+  
+  .about::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-shadow);
+  }
+  
+  .about-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .about-text {
+    text-align: center;
+  }
+  
+  .about-text h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .about-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-align: center;
+  }
+  
+  .about-image,
+  .about-stack {
+    padding-bottom: 2%;
+  }
+  
+  .about-stack img {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 6px var(--color-shadow));
+    border-radius: 5px;
+    margin: 1%;
+  }
+
+  a#downloadLink {
+    display: inline-block;
+    outline: 1px solid var(--color-link);
+    transition: outline-width 0.1s ease;
+  }
+  
+  @media (max-width: 767px) {
+    .about-stack {
+      opacity: 1;
+      margin-top: 10%;
+      margin-bottom: 10%;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .about {
+      background-attachment: fixed;
+    }
+  }
+
+  @media (hover: hover) {
+    a#downloadLink:hover {
+      outline-width: 3px;
+    }
+  }
+  

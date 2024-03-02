@@ -1,0 +1,142 @@
+.projects {
+  padding: 5% 0;
+}
+
+.projects h2 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: var(--color-white);
+  border-radius: 10px;
+  filter: drop-shadow(0 0 20px var(--color-shadow));
+  padding: 20px;
+  margin-bottom: 30px;
+  height: 100%;
+}
+
+.project h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.project p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 10%;
+  text-align: center;
+  font-size: 1rem;
+  padding-top: 5%;
+}
+
+.project .btn {
+  margin-top: 5%;
+  width: 50%;
+}
+
+.project .btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+}
+
+.btn.project-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+  gap: 15px;
+  background-color: var(--color-primary);
+  outline: 3px var(--color-primary) solid;
+  outline-offset: -3px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text);
+  font-weight: 700;
+  font-size: 1em;
+  transition: outline 400ms, background-color 400ms, color 400ms, filter 400ms;
+  margin: 1%;
+}
+
+.btn.project-button svg path {
+  transition: 400ms;
+}
+
+.project-container {
+  padding-bottom: calc(var(--bs-gutter-x) * 1);
+}
+
+.btn.paginator-button {
+  background-color: var(--color-primary);
+  outline: 3px solid var(--color-primary);
+  outline-offset: -3px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--color-text);
+  transition: 400ms;
+  margin-left: 1%;
+}
+
+.paginator {
+  justify-content: center;
+  display: flex;
+}
+
+.btn.paginator-button svg path {
+  transition: 400ms;
+}
+
+.stack-utilizado {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  position: relative;
+  bottom: 5%;
+  text-align: center;
+}
+
+@media (hover: hover) {
+  .btn.project-button:hover {
+    outline: 3px var(--color-link) solid;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    filter: drop-shadow(0 0 6px var(--color-shadow));
+  }
+
+  .btn.paginator-button:hover {
+    outline: 3px solid var(--color-link);
+    background-color: var(--color-black);
+    color: var(--color-white);
+    filter: drop-shadow(0 0 6px var(--color-shadow));
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .paginator {
+    position: relative;
+    top: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .paginator {
+    justify-content: center;
+    display: flex;
+    position: relative;
+    bottom: 10px;
+  }
+
+  .col-12 {
+    flex: 0 0 auto;
+    width: 100%;
+    margin-bottom: 5%;
+  } 
+}
+
