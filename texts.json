@@ -14,7 +14,7 @@
   "about": {
     "title": "Manuel Ferrer",
     "backgroundImageUrl": "./resources/images/about.jpg",
-    "description": "Software Developer con más de 7 años de experiencia, especializado en la creación de experiencias excepcionales en el Frontend.",
+    "description": "Software Developer con más de 5 años de experiencia, especializado en la creación de experiencias excepcionales en el Frontend.",
     "stack": ["Angular", "React", "CSharp", "TypeScript", "SQL", "MongoDB"]
   },
   "experiences": {
