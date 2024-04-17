@@ -63,7 +63,7 @@ fetch('./texts.json')
               if (project.stack.length > 0) {
                   stackHtml = `
                       <div class="stack-utilizado">
-                          <h4>Stack</h4>
+                          
                           <div class="about-stack">${project.stack.map(tech => `<img src="${generateShieldURL(tech)}" alt="${tech}">`).join('')}</div>
                       </div>`;
               }
