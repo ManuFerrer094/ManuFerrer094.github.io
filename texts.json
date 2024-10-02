@@ -22,6 +22,13 @@
     "description": "Descubre algunos de los emocionantes desafíos y proyectos en los que he participado. Desde la creación de potentes aplicaciones hasta la implementación de soluciones web de vanguardia, mi trayectoria refleja un compromiso constante con la excelencia y la innovación.",
     "items": [
       {
+        "name": "Turing Challenge",
+        "role": "IA Developer",
+        "date": "2024",
+        "description": "\"En Turing Challenge, estoy centrado en la parte frontend de diversos proyectos basados en Inteligencia Artificial, creando y conectando el frontend con el backend.\"",
+        "stack": ["VUE", "React", "TypeScript", "Azure", "HTML5", "CSS3", "Tailwind"]
+      },
+      {
         "name": "IFS",
         "role": "Software Developer",
         "date": "2019-2024",
