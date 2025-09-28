@@ -42,14 +42,16 @@
 
 /* Project Card Design */
 .project {
-  background: var(--glass-bg);
+  /* keep translucency so particles/clouds show underneath */
+  background: var(--project-bg);
   backdrop-filter: var(--glass-backdrop);
   -webkit-backdrop-filter: var(--glass-backdrop);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-2xl);
   padding: var(--space-2xl);
   margin-bottom: var(--space-2xl);
-  box-shadow: var(--shadow-xl);
+  /* slightly lighter shadow so background is visible */
+  box-shadow: 0 8px 20px -6px rgba(0,0,0,0.35);
   transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;

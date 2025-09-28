@@ -6,7 +6,8 @@
   transform: translateX(-50%);
   width: calc(100% - var(--space-2xl));
   max-width: 1200px;
-  background: var(--glass-bg) !important;
+  /* use theme-aware header background (slight transparency) */
+  background: var(--header-bg) !important;
   backdrop-filter: var(--glass-backdrop);
   -webkit-backdrop-filter: var(--glass-backdrop);
   border: 1px solid var(--glass-border);
@@ -120,6 +121,74 @@
 
 .nav-link:hover i {
   transform: scale(1.2) rotate(5deg);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: none !important;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-normal);
+}
+
+.theme-toggle:hover {
+  background: rgba(99, 102, 241, 0.1) !important;
+}
+
+/* Theme icons */
+.theme-icon-light,
+.theme-icon-dark {
+  position: absolute;
+  transition: all var(--transition-normal);
+}
+
+/* Default state (dark theme) - show sun icon */
+html[data-theme="dark"] .theme-icon-light,
+:root .theme-icon-light {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+html[data-theme="dark"] .theme-icon-dark,
+:root .theme-icon-dark {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+/* Light theme - show moon icon */
+html[data-theme="light"] .theme-icon-light {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+html[data-theme="light"] .theme-icon-dark {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* Navbar color overrides for light theme (ensure header appears light) */
+html[data-theme="light"] .navbar {
+  background: var(--header-bg) !important;
+  border-color: rgba(0,0,0,0.06);
+  box-shadow: 0 8px 20px -8px rgba(0,0,0,0.12);
+}
+
+html[data-theme="light"] .nav-link,
+html[data-theme="light"] .navbar-brand,
+html[data-theme="light"] .navbar-toggler {
+  color: var(--color-text) !important;
+}
+
+html[data-theme="light"] .navbar-toggler {
+  background: var(--color-surface) !important;
+  color: var(--color-text) !important;
 }
 
 /* Ensure header download link aligns with other nav items */
