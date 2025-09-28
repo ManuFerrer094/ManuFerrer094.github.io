@@ -122,6 +122,13 @@
   transform: scale(1.2) rotate(5deg);
 }
 
+/* Ensure header download link aligns with other nav items */
+.nav-link#downloadLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
 /* Mobile Responsive */
 @media (max-width: 991px) {
   .navbar {

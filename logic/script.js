@@ -1,10 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-  // Initialize Atropos 3D effect
-  const myAtropos = Atropos({
-    el: '.atropos-exp',
-    activeOffset: 40,
-    shadowScale: 1.05,
-  });
+  // Atropos effect removed — using particles/stars instead.
 
   // Download button functionality
   const downloadButton = document.getElementById('downloadButton');
@@ -49,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  // Add scroll reveal animation
+  // Add scroll reveal animation only for projects (not about/experience sections)
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -57,18 +52,44 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const observer = new IntersectionObserver(function(entries) {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting && !entry.target.classList.contains('fade-in')) {
         entry.target.classList.add('fade-in');
+        // Stop observing this element once it's been animated
+        observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
 
-  // Observe elements for animation
-  document.querySelectorAll('.project, .about-stack, .experience .tab-pane').forEach(el => {
-    observer.observe(el);
+  // Only observe project elements, not about-stack or experience elements
+  // About and Experience sections handle their own animations
+  document.querySelectorAll('.project').forEach(el => {
+    // Don't observe if it's inside #about or #experience sections
+    const parentAbout = el.closest('#about');
+    const parentExperience = el.closest('#experience');
+    
+    if (!parentAbout && !parentExperience) {
+      observer.observe(el);
+    }
   });
+  
+  // Ensure main sections are always visible after DOM is loaded
+  setTimeout(() => {
+    const aboutSection = document.getElementById('about');
+    const experienceSection = document.getElementById('experience');
+    
+    if (aboutSection) {
+      aboutSection.style.opacity = '1';
+      aboutSection.style.visibility = 'visible';
+    }
+    
+    if (experienceSection) {
+      experienceSection.style.opacity = '1';
+      experienceSection.style.visibility = 'visible';
+    }
+  }, 100);
 
   // Create floating particles
+  createLoadingSkeleton();
   createFloatingParticles();
 
   // Add hover effects to tech stack images
@@ -81,17 +102,52 @@ function createFloatingParticles() {
   particlesContainer.className = 'particles';
   document.body.appendChild(particlesContainer);
 
-  for (let i = 0; i < 20; i++) {
+  // Increase particle count for more stars and vary sizes/opacity for depth
+  for (let i = 0; i < 80; i++) {
     const particle = document.createElement('div');
     particle.className = 'particle';
     
-    // Random positioning and animation delay
+    // Random positioning, size, brightness and animation delay for star effect
     particle.style.left = Math.random() * 100 + '%';
     particle.style.top = Math.random() * 100 + '%';
-    particle.style.animationDelay = Math.random() * 6 + 's';
-    particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+    const size = (Math.random() * 2) + 1; // 1px to 3px
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+    particle.style.opacity = (0.3 + Math.random() * 0.8).toString();
+    particle.style.animationDelay = Math.random() * 8 + 's';
+    particle.style.animationDuration = (Math.random() * 6 + 4) + 's';
+    particle.style.filter = `blur(${Math.random() * 1}px)`;
     
     particlesContainer.appendChild(particle);
+  }
+}
+
+// Create simple loading skeletons for about and experience until content arrives
+function createLoadingSkeleton() {
+  const about = document.getElementById('about');
+  if (about && !about.querySelector('.skeleton')) {
+    const s = document.createElement('div');
+    s.className = 'skeleton about-skeleton';
+    s.innerHTML = `
+      <div class="s-line title"></div>
+      <div class="s-line text"></div>
+      <div class="s-line badges"></div>
+    `;
+    const target = about.querySelector('.about-content') || about;
+    target.appendChild(s);
+  }
+
+  const exp = document.getElementById('experience');
+  if (exp && !exp.querySelector('.skeleton')) {
+    const s2 = document.createElement('div');
+    s2.className = 'skeleton experience-skeleton';
+    s2.innerHTML = `
+      <div class="s-line title"></div>
+      <div class="s-line text"></div>
+      <div class="s-line tab"></div>
+    `;
+    const target2 = exp.querySelector('.container') || exp;
+    target2.insertBefore(s2, target2.firstChild);
   }
 }
 
@@ -137,3 +193,26 @@ document.addEventListener('click', function(event) {
     toggler.click();
   }
 });
+
+// Diagnostic MutationObserver to log changes to #about and #experience
+try {
+  const targetNodes = ['about', 'experience'].map(id => document.getElementById(id)).filter(Boolean);
+  if (targetNodes.length) {
+    const mObserver = new MutationObserver((mutations) => {
+      mutations.forEach(m => {
+        if (m.type === 'childList') {
+          console.log('[mutation] childList change on', m.target.id, m);
+        } else if (m.type === 'attributes') {
+          console.log('[mutation] attribute change on', m.target.id, m.attributeName, 'newValue=', m.target.getAttribute(m.attributeName));
+        }
+      });
+    });
+
+    targetNodes.forEach(node => {
+      mObserver.observe(node, { attributes: true, childList: true, subtree: true });
+    });
+    console.log('[diagnostic] MutationObserver attached to', targetNodes.map(n => n.id));
+  }
+} catch (e) {
+  console.warn('[diagnostic] failed to attach MutationObserver', e);
+}

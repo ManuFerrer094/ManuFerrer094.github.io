@@ -7,16 +7,43 @@ fetch('texts.json')
     updateElementContent('#about h2', aboutData.title);
     updateElementContent('#about .about-text p', aboutData.description);
     updateStack('about', aboutData.stack);
-    updateBackgroundImage('about', aboutData.backgroundImageUrl);
+    
+    // Create the new layout structure
+    const aboutContent = document.querySelector('#about .about-content');
+    const aboutText = document.querySelector('#about .about-text');
+    
+    // Create image container
+    const aboutImage = document.createElement('div');
+    aboutImage.className = 'about-image';
+    aboutImage.innerHTML = `<img src="${aboutData.backgroundImageUrl}" alt="Manuel Ferrer">`;
+    
+    // Clear existing content and rebuild
+    aboutContent.innerHTML = '';
+    aboutContent.appendChild(aboutImage);
+    aboutContent.appendChild(aboutText);
 
     // Add scroll indicator to about section
     addScrollIndicator();
     
-    // Add entrance animations
+    // Add entrance animations and ensure section stays visible
     setTimeout(() => {
       const aboutSection = document.querySelector('#about');
       if (aboutSection) {
-        aboutSection.classList.add('fade-in');
+        // Remove skeleton if present
+        const skeleton = aboutSection.querySelector('.about-skeleton');
+        if (skeleton) skeleton.remove();
+        
+        // Ensure the section is always visible
+        aboutSection.style.opacity = '1';
+        aboutSection.style.visibility = 'visible';
+        
+        // Add fade-in animation to children elements only
+        const aboutStack = aboutSection.querySelector('.about-stack');
+        if (aboutStack && !aboutStack.classList.contains('fade-in')) {
+          aboutStack.classList.add('fade-in');
+        }
+        
+        console.log('[about] content injected, skeleton removed, and visibility ensured');
       }
     }, 300);
   })
