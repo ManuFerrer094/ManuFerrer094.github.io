@@ -1,10 +1,74 @@
+/* Modern Footer */
 footer {
-    background-color: var(--color-dark);
-    color: var(--color-white);
-    padding: 20px 0;
-    text-align: center;
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-background) 100%);
+  color: var(--color-text);
+  padding: var(--space-2xl) 0;
+  text-align: center;
+  position: relative;
+  border-top: 1px solid var(--glass-border);
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gradient-primary);
+  opacity: 0.5;
+}
+
+footer .container {
+  position: relative;
+  z-index: 1;
+}
+
+footer p {
+  margin: 0;
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+footer a {
+  color: var(--color-white);
+  text-decoration: none;
+  font-weight: 600;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+footer a::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: width var(--transition-normal);
+}
+
+footer a:hover::before {
+  width: 100%;
+}
+
+footer a:hover {
+  transform: translateY(-1px);
+}
+
+footer strong {
+  font-weight: 700;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  footer {
+    padding: var(--space-xl) 0;
   }
-  
-  footer p {
-    margin: 0;
-  }
+}

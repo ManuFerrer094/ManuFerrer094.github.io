@@ -29,8 +29,8 @@ fetch('texts.json')
       tabPane.setAttribute('aria-labelledby', `experience${i + 1}-tab`);
       tabPane.innerHTML = `
         <h3>${experience.name}</h3>
-        <span><strong>${experience.role}</strong></span>
-        <span class="date-header">${experience.date}</span>
+        <strong>${experience.role}</strong>
+        <div class="date">${experience.date}</div>
         <p>${experience.description}</p>
         <div class="stack-utilizado">
           <h4>Stack</h4>
@@ -38,5 +38,12 @@ fetch('texts.json')
         </div>`;
       tabContent.appendChild(tabPane);
     });
+
+    // Add entrance animations
+    setTimeout(() => {
+      document.querySelectorAll('.tab-pane').forEach((pane, index) => {
+        pane.classList.add('slide-up');
+      });
+    }, 300);
   })
   .catch(error => console.error('Error cargando el archivo JSON:', error));
