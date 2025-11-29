@@ -77,6 +77,12 @@ html[data-theme="dark"] {
     /* Header background (slightly more transparent than cards) */
     --header-bg: rgba(15, 23, 42, 0.55);
 
+    /* Card specific gradients (dark) */
+    --card-grad-1: #3b82f6; /* blue */
+    --card-grad-2: #7c3aed; /* purple */
+    --card-grad-3: #c084fc; /* soft accent */
+    --card-text-color: #ffffff;
+
     /* Particle / Star colors for dark theme */
     --particle-star-color: rgba(255, 255, 255, 0.95);
     --particle-star-accent: rgba(99, 102, 241, 0.18);
@@ -124,6 +130,12 @@ html[data-theme="light"] {
     --glass-backdrop: blur(8px);
     /* Header background for light theme (more clear) */
     --header-bg: rgba(255, 255, 255, 0.48);
+
+    /* Card specific gradients (light) */
+    --card-grad-1: #60a5fa; /* light blue */
+    --card-grad-2: #7c3aed; /* purple to keep accent */
+    --card-grad-3: #fbcfe8; /* soft pink */
+    --card-text-color: #0f172a;
 
     /* Particle / Cloud stroke colors for light theme (painted lines) */
     --particle-star-color: rgba(255, 255, 255, 0.95);
