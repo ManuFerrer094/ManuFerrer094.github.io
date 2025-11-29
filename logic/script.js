@@ -119,6 +119,9 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }, 100);
 
+  // Typing text rotator
+  initTypingRotator(["Frontend Developer", "EX IFS Developer", "Turing AI Developer"], '.typing-text');
+
   // Create floating particles
   createLoadingSkeleton();
   createFloatingParticles();
@@ -391,3 +394,55 @@ document.addEventListener('click', function(event) {
     toggler.click();
   }
 });
+
+function initTypingRotator(phrases, selector, options = {}) {
+  const el = document.querySelector(selector);
+  if (!el || !Array.isArray(phrases) || phrases.length === 0) return;
+
+  const cfg = Object.assign({ typingSpeed: 90, deleteSpeed: 50, pauseDelay: 1500 }, options);
+
+  el.setAttribute('aria-live', 'polite');
+
+  if (!document.getElementById('typing-rotator-style')) {
+    const style = document.createElement('style');
+    style.id = 'typing-rotator-style';
+    style.innerHTML = `
+      .typing-cursor{display:inline-block; margin-left:6px; width:8px; animation:typing-blink 1s steps(1) infinite;}
+      @keyframes typing-blink{50%{opacity:0}};
+    `;
+    document.head.appendChild(style);
+  }
+
+  el.innerHTML = '<span class="typing-chars"></span><span class="typing-cursor">|</span>';
+  const chars = el.querySelector('.typing-chars');
+
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  function step() {
+    const current = phrases[phraseIndex];
+
+    if (!deleting) {
+      chars.textContent = current.slice(0, charIndex + 1);
+      charIndex++;
+      if (charIndex === current.length) {
+        setTimeout(() => { deleting = true; step(); }, cfg.pauseDelay);
+        return;
+      }
+      setTimeout(step, cfg.typingSpeed);
+    } else {
+      chars.textContent = current.slice(0, charIndex - 1);
+      charIndex--;
+      if (charIndex === 0) {
+        deleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        setTimeout(step, cfg.typingSpeed);
+        return;
+      }
+      setTimeout(step, cfg.deleteSpeed);
+    }
+  }
+
+  step();
+}
