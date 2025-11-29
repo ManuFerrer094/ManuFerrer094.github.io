@@ -114,7 +114,6 @@
 }
 
 .typing-text::after {
-  content: "|";
   position: absolute;
   right: -12px;
   animation: blink 1s step-end infinite;
