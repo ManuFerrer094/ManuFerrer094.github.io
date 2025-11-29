@@ -12,33 +12,32 @@ fetch('texts.json')
     // Generate Tech Stack Grid
     const stackGrid = document.getElementById('techStack');
     if (stackGrid && aboutData.stack) {
+      const iconMap = {
+        'Angular': { cls: 'fa-brands fa-angular', color: '#dd0031' },
+        'React': { cls: 'fa-brands fa-react', color: '#61dafb' },
+        'Vue': { cls: 'fa-brands fa-vuejs', color: '#42b883' },
+        'HTML5': { cls: 'fa-brands fa-html5', color: '#e34f26' },
+        'CSS3': { cls: 'fa-brands fa-css3-alt', color: '#1572B6' },
+        'TypeScript': { cls: 'fa-brands fa-js', color: '#3178c6' },
+        'JavaScript': { cls: 'fa-brands fa-js', color: '#f7df1e' },
+        'Node': { cls: 'fa-brands fa-node-js', color: '#6cc24a' },
+        'Python': { cls: 'fa-brands fa-python', color: '#3776ab' },
+        'Java': { cls: 'fa-brands fa-java', color: '#007396' },
+        'Docker': { cls: 'fa-brands fa-docker', color: '#2496ed' },
+        'Git': { cls: 'fa-brands fa-git-alt', color: '#f05032' },
+        'SQL': { cls: 'fa-solid fa-database', color: '#0f172a' },
+        'MongoDB': { cls: 'fa-solid fa-leaf', color: '#47A248' },
+      };
+
       stackGrid.innerHTML = aboutData.stack.map(tech => {
-        // Map tech names to icon filenames (assuming they exist in resources/images/)
-        // If not, we can use a default icon or FontAwesome
-        const iconName = tech.toLowerCase().replace(/\s+/g, '-');
-        // Using a placeholder or mapping logic. For now, let's assume we have icons or use text.
-        // Since I don't have the list of icons, I'll use a generic approach or try to find them.
-        // Let's use FontAwesome icons where possible or a generic code icon
-        
-        let iconClass = 'fa-solid fa-code';
-        if (tech.includes('Angular')) iconClass = 'fa-brands fa-angular';
-        else if (tech.includes('React')) iconClass = 'fa-brands fa-react';
-        else if (tech.includes('Vue')) iconClass = 'fa-brands fa-vuejs';
-        else if (tech.includes('HTML')) iconClass = 'fa-brands fa-html5';
-        else if (tech.includes('CSS')) iconClass = 'fa-brands fa-css3-alt';
-        else if (tech.includes('JavaScript') || tech.includes('JS')) iconClass = 'fa-brands fa-js';
-        else if (tech.includes('Node')) iconClass = 'fa-brands fa-node-js';
-        else if (tech.includes('Python')) iconClass = 'fa-brands fa-python';
-        else if (tech.includes('Java')) iconClass = 'fa-brands fa-java';
-        else if (tech.includes('Docker')) iconClass = 'fa-brands fa-docker';
-        else if (tech.includes('Git')) iconClass = 'fa-brands fa-git-alt';
-        else if (tech.includes('SQL')) iconClass = 'fa-solid fa-database';
-        else if (tech.includes('Mongo')) iconClass = 'fa-solid fa-leaf';
-        else if (tech.includes('C#') || tech.includes('CSharp')) iconClass = 'fa-brands fa-microsoft';
-        
+        const key = tech.replace(/\s+/g, '');
+        const map = iconMap[tech] || iconMap[key] || null;
+        const iconClass = map ? map.cls : 'fa-solid fa-code';
+        const iconColor = map ? map.color : 'var(--color-primary)';
+
         return `
           <div class="stack-item">
-            <i class="${iconClass} stack-icon" style="font-size: 32px; color: var(--color-primary);"></i>
+            <i class="${iconClass} stack-icon" style="font-size: 32px; color: ${iconColor};"></i>
             <span class="stack-name">${tech}</span>
           </div>
         `;

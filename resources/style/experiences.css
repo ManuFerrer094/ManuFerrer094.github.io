@@ -67,6 +67,18 @@
   box-shadow: 0 0 0 8px rgba(99, 102, 241, 0.3);
 }
 
+/* Active state: when the item is centered/in-focus in the viewport */
+.timeline-item.active .timeline-dot {
+  transform: scale(1.6);
+  box-shadow: 0 0 0 10px rgba(99, 102, 241, 0.35);
+}
+
+.timeline-item.active .timeline-content {
+  transform: translateY(-8px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-2xl);
+}
+
 .timeline-content {
   background: var(--glass-bg);
   backdrop-filter: blur(20px);

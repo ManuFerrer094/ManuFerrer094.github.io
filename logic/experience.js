@@ -41,9 +41,27 @@ fetch('texts.json')
         });
       }, { threshold: 0.1 });
       
-      document.querySelectorAll('.timeline-item').forEach(item => {
+      const items = document.querySelectorAll('.timeline-item');
+      items.forEach(item => {
         observer.observe(item);
       });
+
+      // Observer to mark the timeline item that is centered in the viewport as "active"
+      const activeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // remove active from other items
+            document.querySelectorAll('.timeline-item.active').forEach(i => {
+              if (i !== entry.target) i.classList.remove('active');
+            });
+            entry.target.classList.add('active');
+          } else {
+            entry.target.classList.remove('active');
+          }
+        });
+      }, { root: null, rootMargin: '-40% 0px -40% 0px', threshold: 0 });
+
+      items.forEach(item => activeObserver.observe(item));
       
       // Remove skeleton if present
       const expSection = document.getElementById('experience');
