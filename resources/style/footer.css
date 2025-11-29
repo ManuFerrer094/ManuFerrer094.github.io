@@ -54,9 +54,35 @@
   display: inline-block;
 }
 
+/* Make footer lists display as clean link groups (no bullets) */
+.footer-column ul {
+  list-style: none;
+  margin: 12px 0 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-column li {
+  margin: 0;
+}
+
+.footer-column a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: 6px 8px;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+}
+
 .footer-column a:hover {
   color: var(--color-primary);
-  transform: translateX(4px);
+  background: rgba(255,255,255,0.03);
+  transform: translateX(6px);
 }
 
 .footer-bottom {

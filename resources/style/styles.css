@@ -229,6 +229,14 @@ p {
   animation: cloudFloat 8s ease-in-out infinite;
 }
 
+/* Hide cloud particles when in dark theme to avoid visible clouds at night */
+:root[data-theme="dark"] .cloud-particle,
+:root[data-theme="dark"] .cloud-stroke {
+  opacity: 0 !important;
+  pointer-events: none;
+  visibility: hidden;
+}
+
 .star-particle {
   box-shadow: 0 0 6px rgba(255,255,255,0.6), 0 0 12px rgba(99,102,241,0.12);
   animation: starFloat 6s ease-in-out infinite;
