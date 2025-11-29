@@ -3,127 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Manuel Ferrer - Frontend Developer</title>
+    <meta name="description" content="Software Developer con 7 años de experiencia, especializado en crear experiencias excepcionales en Frontend">
     <link rel="icon" href="" type="image/x-icon">
     
     <!-- Preload critical fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Core Styles -->
     <link rel="stylesheet" href="./resources/style/styles.css">
+    <link rel="stylesheet" href="./resources/style/modern-nav.css">
+    <link rel="stylesheet" href="./resources/style/hero.css">
     <link rel="stylesheet" href="./resources/style/about.css">
     <link rel="stylesheet" href="./resources/style/experiences.css">
     <link rel="stylesheet" href="./resources/style/projects.css">
     <link rel="stylesheet" href="./resources/style/footer.css">
-    <link rel="stylesheet" href="./resources/style/navbar.css">
     
     <!-- External Dependencies -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     
     <!-- Performance optimizations -->
     <meta name="theme-color" content="#6366f1">
-    <meta name="color-scheme" content="dark">
+    <meta name="color-scheme" content="dark light">
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a16a1c293f.js" crossorigin="anonymous"></script>
-  <!-- Atropos removed: using particle/star background instead -->
-  </head>
+</head>
 <body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="#"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+  <!-- Animated Background -->
+  <div class="particles" id="particles"></div>
+  
+  <!-- Modern Navigation -->
+  <header class="modern-header">
+    <nav class="modern-nav">
+      <div class="nav-container">
+        <a class="nav-brand" href="#hero">
+          <span class="brand-text">MF</span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <span class="hamburger"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="#about">Sobre mí</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#experience">Experiencia</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#projects">Proyectos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="linkedinLink" href="" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="githubLink" href="" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
-            </li>            
-            <li class="nav-item">
-              <button id="themeToggle" class="nav-link theme-toggle" aria-label="Toggle theme">
-                <i class="fa-solid fa-sun theme-icon-light"></i>
-                <i class="fa-solid fa-moon theme-icon-dark"></i>
-              </button>
-            </li>
-            <li class="nav-item">
-              <a id="downloadLink" class="nav-link" target="_blank" download>CV <i class="fa-regular fa-file-pdf"></i></a>
-            </li>
+        <div class="nav-menu" id="navMenu">
+          <ul class="nav-links">
+            <li><a class="nav-link" href="#about">Sobre mí</a></li>
+            <li><a class="nav-link" href="#experience">Experiencia</a></li>
+            <li><a class="nav-link" href="#projects">Proyectos</a></li>
           </ul>
+          <div class="nav-actions">
+            <a class="nav-icon" id="linkedinLink" href="" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a class="nav-icon" id="githubLink" href="" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle theme">
+              <i class="fa-solid fa-sun theme-icon-light"></i>
+              <i class="fa-solid fa-moon theme-icon-dark"></i>
+            </button>
+            <a id="downloadLink" class="btn-cv" target="_blank" download>
+              <span>Descargar CV</span>
+              <i class="fa-solid fa-download"></i>
+            </a>
+          </div>
         </div>
       </div>
     </nav>
-  </header> 
-  <section id="about" class="about">
-    <div class="container">
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Disponible para nuevos proyectos</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="hero-greeting">Hola, soy</span>
+          <span class="hero-name">Manuel Ferrer</span>
+        </h1>
+        <p class="hero-subtitle">
+          <span class="typing-text">Frontend Developer</span>
+        </p>
+        <p class="hero-description">
+          Transformo ideas en experiencias digitales excepcionales. 
+          Con <strong>7 años de experiencia</strong> creando interfaces modernas, 
+          accesibles y de alto rendimiento.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn-primary">
+            <span>Ver proyectos</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="#about" class="btn-secondary">
+            <span>Conocer más</span>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">7+</span>
+            <span class="stat-label">Años de experiencia</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">Proyectos completados</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Satisfacción del cliente</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="floating-card card-1">
+          <i class="fa-brands fa-angular"></i>
+        </div>
+        <div class="floating-card card-2">
+          <i class="fa-brands fa-react"></i>
+        </div>
+        <div class="floating-card card-3">
+          <i class="fa-brands fa-vuejs"></i>
+        </div>
+        <div class="floating-card card-4">
+          <i class="fa-brands fa-js"></i>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+  
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Sobre mí</span>
+        <h2 class="section-title"></h2>
+      </div>
       <div class="about-content">
         <div class="about-text">
-          <h2></h2>
-          <p></p>
-          <div class="about-stack">
+          <p class="about-description"></p>
+          <div class="tech-stack">
+            <h3 class="stack-title">Stack Tecnológico</h3>
+            <div class="stack-grid" id="techStack"></div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <div class="web-content">
-    <section id="experience" class="experience">
-      <div class="container">
-        <h2></h2>
-        <div class="about-text">
-          <p></p>
+
+  <!-- Experience Section -->
+  <section id="experience" class="experience-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Trayectoria</span>
+        <h2 class="section-title"></h2>
+      </div>
+      <div class="experience-content">
+        <p class="section-description"></p>
+        <div class="experience-timeline" id="experienceTimeline">
+          <!-- Dynamic content -->
         </div>
-        <div class="row">
-          <div class="col-12 col-md-12 project-container">
-            <div class="project">
-              <ul class="nav nav-tabs" id="myTab" role="tablist">
-              </ul>
-              <div class="tab-content" id="myTabContent">
-              </div>
-            </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Portafolio</span>
+        <h2 class="section-title"></h2>
+      </div>
+      <div class="projects-content">
+        <p class="section-description"></p>
+        <div class="projects-grid" id="projectsGrid">
+          <!-- Dynamic content -->
+        </div>
+        <div class="projects-pagination" id="projectsPagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="modern-footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3>Manuel Ferrer</h3>
+          <p>Frontend Developer especializado en crear experiencias digitales excepcionales</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Navegación</h4>
+            <ul>
+              <li><a href="#about">Sobre mí</a></li>
+              <li><a href="#experience">Experiencia</a></li>
+              <li><a href="#projects">Proyectos</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Contacto</h4>
+            <ul>
+              <li><a id="footerLinkedin" href="" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a id="footerGithub" href="" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
           </div>
         </div>
       </div>
-    </section>
-    <section id="projects" class="projects">
-      <div class="container">
-        <h2></h2>
-        <div class="about-text">
-          <p></p>
-        </div>
-        <div class="row">
-          <div class="about-stack">
-          </div>
-        </div>
-        <div class="paginator"></div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="currentYear"></span> Manuel Ferrer. Diseñado y desarrollado con <i class="fa-solid fa-heart"></i></p>
       </div>
-    </section>
-  </div>
-  <footer>
-      <div class="container" id="footerContent">
-      </div>
-  </footer>  
+    </div>
+  </footer>
+
+  <!-- Scripts -->
   <script src="./logic/script.js"></script>
   <script type="module" src="./logic/header.js"></script>
   <script type="module" src="./logic/fetch-content.js"></script>
   <script type="module" src="./logic/about.js"></script>
   <script type="module" src="./logic/experience.js"></script>
   <script type="module" src="./logic/projects.js"></script>
+  <script type="module" src="./logic/footer.js"></script>
 </body>
 </html>

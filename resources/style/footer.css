@@ -1,74 +1,98 @@
-/* Modern Footer */
-footer {
-  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-background) 100%);
-  color: var(--color-text);
-  padding: var(--space-2xl) 0;
-  text-align: center;
-  position: relative;
+/* ========================================
+   MODERN FOOTER
+   ======================================== */
+
+.modern-footer {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
   border-top: 1px solid var(--glass-border);
-}
-
-footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--gradient-primary);
-  opacity: 0.5;
-}
-
-footer .container {
+  padding: 80px 0 40px;
+  margin-top: 100px;
   position: relative;
-  z-index: 1;
+  z-index: 10;
 }
 
-footer p {
-  margin: 0;
-  font-size: var(--font-size-base);
-  color: var(--color-text-muted);
-  line-height: 1.6;
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-footer a {
-  color: var(--color-white);
-  text-decoration: none;
-  font-weight: 600;
-  background: var(--gradient-primary);
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+.footer-brand h3 {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  transition: all var(--transition-normal);
-  position: relative;
 }
 
-footer a::before {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--gradient-primary);
-  transition: width var(--transition-normal);
+.footer-brand p {
+  color: var(--color-text-muted);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 400px;
 }
 
-footer a:hover::before {
-  width: 100%;
+.footer-links {
+  display: flex;
+  gap: 60px;
 }
 
-footer a:hover {
-  transform: translateY(-1px);
-}
-
-footer strong {
+.footer-column h4 {
+  font-size: 16px;
   font-weight: 700;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.footer-column a:hover {
+  color: var(--color-primary);
+  transform: translateX(4px);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--glass-border);
+  padding-top: 40px;
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.footer-bottom i {
+  color: #ef4444;
+  animation: beat 1s infinite;
+}
+
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  footer {
-    padding: var(--space-xl) 0;
+  .modern-footer {
+    padding: 60px 0 30px;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 40px;
   }
 }
