@@ -94,9 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }, observerOptions);
 
   // Only observe project elements, not about-stack or experience elements
-  // About and Experience sections handle their own animations
   document.querySelectorAll('.project').forEach(el => {
-    // Don't observe if it's inside #about or #experience sections
     const parentAbout = el.closest('#about');
     const parentExperience = el.closest('#experience');
     
@@ -156,23 +154,82 @@ function toggleTheme() {
 
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
-  
-  // Recreate particles with theme-appropriate style
   recreateParticles();
 }
 
+// Interactive Particle System
+let particlesArray = [];
+let mouse = { x: null, y: null, radius: 250 };
+
+window.addEventListener('mousemove', function(event) {
+  mouse.x = event.clientX;
+  mouse.y = event.clientY;
+});
+
+class Particle {
+    constructor(x, y, element, density) {
+        this.x = x;
+        this.y = y;
+        this.baseX = x;
+        this.baseY = y;
+        this.element = element;
+        this.density = density;
+    }
+    
+    update() {
+        // Calculate distance between mouse and particle
+        let dx = mouse.x - this.x;
+        let dy = mouse.y - this.y;
+        let distance = Math.sqrt(dx*dx + dy*dy);
+        
+        if (distance < mouse.radius) {
+            // Repulsion force (Push away effect)
+            let forceDirectionX = dx / distance;
+            let forceDirectionY = dy / distance;
+            let maxDistance = mouse.radius;
+            let force = (maxDistance - distance) / maxDistance;
+            
+            // Move away from mouse (inverted signs)
+            let directionX = forceDirectionX * force * this.density;
+            let directionY = forceDirectionY * force * this.density;
+            
+            this.x -= directionX;
+            this.y -= directionY;
+        } else {
+            // Return to base position (Elastic effect)
+            if (this.x !== this.baseX) {
+                let dx = this.x - this.baseX;
+                this.x -= dx/25;
+            }
+            if (this.y !== this.baseY) {
+                let dy = this.y - this.baseY;
+                this.y -= dy/25;
+            }
+        }
+        
+        // Apply transformation relative to base position
+        let translateX = this.x - this.baseX;
+        let translateY = this.y - this.baseY;
+        
+        this.element.style.transform = `translate3d(${translateX}px, ${translateY}px, 0)`;
+    }
+}
+
+function animateParticles() {
+    for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+    }
+    requestAnimationFrame(animateParticles);
+}
+
 function recreateParticles() {
-  // Remove existing particles
   const existingParticles = document.querySelector('.particles');
   if (existingParticles) {
     existingParticles.remove();
   }
-  
-  // Create new particles based on current theme
   createFloatingParticles();
 }
 
-// Create floating background particles (adaptive to theme)
 function createFloatingParticles() {
   const particlesContainer = document.createElement('div');
   particlesContainer.className = 'particles';
@@ -181,23 +238,38 @@ function createFloatingParticles() {
   const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
   const isLightMode = currentTheme === 'light';
 
-  // Adjust particle count and style based on theme
-  const particleCount = isLightMode ? 40 : 80; // Fewer particles in light mode
+  particlesArray = [];
+  const particleCount = isLightMode ? 40 : 80;
   
   for (let i = 0; i < particleCount; i++) {
-    // create an svg-based particle so we can stroke/paint the cloud outlines
     const particle = document.createElement('div');
-    particle.className = `particle ${isLightMode ? 'cloud-particle' : 'star-particle'}`;
-    particle.style.left = Math.random() * 100 + '%';
-    particle.style.top = Math.random() * 100 + '%';
+    particle.className = 'particle'; 
+    
+    // Random position
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * window.innerHeight;
+    
+    particle.style.left = x + 'px';
+    particle.style.top = y + 'px';
+    
+    // Create inner element for CSS animations (rotate/scale)
+    const inner = document.createElement('div');
+    inner.className = isLightMode ? 'cloud-particle' : 'star-particle';
+    inner.style.width = '100%';
+    inner.style.height = '100%';
+    inner.style.position = 'relative'; 
+    inner.style.top = '0';
+    inner.style.left = '0';
+    
+    inner.style.animationDelay = Math.random() * 8 + 's';
+    inner.style.animationDuration = (Math.random() * 6 + 4) + 's';
 
     if (isLightMode) {
-      // Create an SVG cloud outline (painted line) sized moderately
-      const w = Math.floor((Math.random() * 80) + 60); // 60px - 140px width
-      const h = Math.floor(w * (Math.random() * 0.35 + 0.18)); // proportional height
+      const w = Math.floor((Math.random() * 80) + 60);
+      const h = Math.floor(w * (Math.random() * 0.35 + 0.18));
       particle.style.width = w + 'px';
       particle.style.height = h + 'px';
-      particle.style.opacity = (0.8 + Math.random() * 0.2).toString();
+      inner.style.opacity = (0.8 + Math.random() * 0.2).toString();
 
       const svgns = 'http://www.w3.org/2000/svg';
       const svg = document.createElementNS(svgns, 'svg');
@@ -205,23 +277,18 @@ function createFloatingParticles() {
       svg.setAttribute('height', '100%');
       svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
 
-      // create a gently curving cloud path made of arcs/circles approximated with path
       const path = document.createElementNS(svgns, 'path');
-      // Simple cloud-like path using bezier curves
-      const cx = w/2;
-      const cy = h/2;
       const p = `M ${w*0.05} ${h*0.75} C ${w*0.05} ${h*0.35} ${w*0.25} ${h*0.15} ${w*0.4} ${h*0.25} C ${w*0.5} ${h*0.05} ${w*0.7} ${h*0.05} ${w*0.8} ${h*0.25} C ${w*0.95} ${h*0.25} ${w*0.95} ${h*0.6} ${w*0.7} ${h*0.7} C ${w*0.55} ${h*0.9} ${w*0.25} ${h*0.9} ${w*0.05} ${h*0.75} Z`;
       path.setAttribute('d', p);
       path.setAttribute('class', 'cloud-stroke');
 
       svg.appendChild(path);
-      particle.appendChild(svg);
+      inner.appendChild(svg);
     } else {
-      // Stars: small SVG circle with glow via filter (simulated via box-shadow in CSS)
-      const size = (Math.random() * 3) + 1; // 1px - 4px
+      const size = (Math.random() * 3) + 1;
       particle.style.width = size + 'px';
       particle.style.height = size + 'px';
-      particle.style.opacity = (0.6 + Math.random() * 0.5).toString();
+      inner.style.opacity = (0.6 + Math.random() * 0.5).toString();
 
       const svgns = 'http://www.w3.org/2000/svg';
       const svg = document.createElementNS(svgns, 'svg');
@@ -234,16 +301,22 @@ function createFloatingParticles() {
       circ.setAttribute('cy', size/2);
       circ.setAttribute('r', size/2);
       circ.setAttribute('fill', getComputedStyle(document.documentElement).getPropertyValue('--particle-star-color') || '#fff');
-      circ.setAttribute('opacity', '0.95');
-
+      
       svg.appendChild(circ);
-      particle.appendChild(svg);
+      inner.appendChild(svg);
     }
 
-    particle.style.animationDelay = Math.random() * 8 + 's';
-    particle.style.animationDuration = (Math.random() * 6 + 4) + 's';
-
+    particle.appendChild(inner);
     particlesContainer.appendChild(particle);
+    
+    // Add to physics system (density affects speed)
+    particlesArray.push(new Particle(x, y, particle, (Math.random() * 15) + 5));
+  }
+  
+  // Start animation loop if not already running
+  if (!window.particleAnimationRunning) {
+      window.particleAnimationRunning = true;
+      animateParticles();
   }
 }
 
@@ -318,26 +391,3 @@ document.addEventListener('click', function(event) {
     toggler.click();
   }
 });
-
-// Diagnostic MutationObserver to log changes to #about and #experience
-try {
-  const targetNodes = ['about', 'experience'].map(id => document.getElementById(id)).filter(Boolean);
-  if (targetNodes.length) {
-    const mObserver = new MutationObserver((mutations) => {
-      mutations.forEach(m => {
-        if (m.type === 'childList') {
-          console.log('[mutation] childList change on', m.target.id, m);
-        } else if (m.type === 'attributes') {
-          console.log('[mutation] attribute change on', m.target.id, m.attributeName, 'newValue=', m.target.getAttribute(m.attributeName));
-        }
-      });
-    });
-
-    targetNodes.forEach(node => {
-      mObserver.observe(node, { attributes: true, childList: true, subtree: true });
-    });
-    console.log('[diagnostic] MutationObserver attached to', targetNodes.map(n => n.id));
-  }
-} catch (e) {
-  console.warn('[diagnostic] failed to attach MutationObserver', e);
-}
