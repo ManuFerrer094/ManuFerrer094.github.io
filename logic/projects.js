@@ -3,7 +3,6 @@ import { updateElementContent } from './utils.js';
 const projectsPerPage = 6;
 let currentPage = 1;
 
-// Mock data in case API fails or for testing
 const MOCK_PROJECTS = [
   {
     name: "Portfolio V2",
@@ -53,9 +52,6 @@ fetch('./texts.json')
         return response.json();
       })
       .then(repos => {
-        // Filter out forks if desired, or keep them
-        // repos = repos.filter(repo => !repo.fork);
-        
         if (repos.length === 0) {
           console.warn('No repos found, using mock data');
           return MOCK_PROJECTS;
@@ -67,7 +63,6 @@ fetch('./texts.json')
         return MOCK_PROJECTS;
       })
       .then(repos => {
-        // Sort repos: homepage first, then by creation date
         repos.sort((a, b) => {
           if (a.homepage && !b.homepage) return -1;
           if (!a.homepage && b.homepage) return 1;
@@ -78,14 +73,11 @@ fetch('./texts.json')
           title: "Proyectos Destacados",
           description: "Explora una selección de mis proyectos personales y experimentos con código.",
           items: repos.map(repo => {
-            // Determine image URL: Use screenshot of homepage if available, otherwise a consistent placeholder
             let imageUrl;
             if (repo.homepage && repo.homepage.startsWith('http')) {
-              // Use screenshot.rocks - free and reliable service
-              imageUrl = `https://api.screenshot.rocks/in/pixels?url=${encodeURIComponent(repo.homepage)}&width=1200&height=2400&type=jpeg&quality=85`;
+              imageUrl = `https://api.microlink.io/?url=${encodeURIComponent(repo.homepage)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1200&viewport.height=2400&scroll=300`;
             } else {
-              // Fallback: use a nice gradient placeholder
-              imageUrl = `https://dummyimage.com/1200x800/06b6d4/ffffff&text=${encodeURIComponent(repo.name.replace(/-/g, ' '))}`;
+              imageUrl = `https://via.placeholder.com/1200x800/06b6d4/ffffff?text=${encodeURIComponent(repo.name.replace(/-/g, '+'))}`;
             }
 
             return {
@@ -118,7 +110,11 @@ fetch('./texts.json')
             projectGrid.innerHTML = projectsToShow.map((project, index) => `
               <article class="project-card slide-up" style="animation-delay: ${index * 100}ms">
                 <div class="project-image project-image-scrollable">
-                  <img src="${project.image}" alt="${project.name}" loading="lazy" class="scrollable-screenshot">
+                  <img src="${project.image}" 
+                       alt="${project.name}" 
+                       loading="lazy" 
+                       class="scrollable-screenshot"
+                       onerror="this.onerror=null; this.src='https://via.placeholder.com/1200x800/06b6d4/ffffff?text=${encodeURIComponent(project.name.replace(/-/g, '+'))}'; this.classList.remove('scrollable-screenshot');">
                 </div>
                 <div class="project-content">
                   <h3 class="project-title">
@@ -144,7 +140,6 @@ fetch('./texts.json')
               </article>
             `).join('');
             
-            // Trigger animations
             setTimeout(() => {
               document.querySelectorAll('.project-card').forEach(card => card.classList.add('animate'));
             }, 50);

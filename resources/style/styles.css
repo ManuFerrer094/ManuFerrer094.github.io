@@ -1,6 +1,5 @@
 @import url('variables.css');
 
-/* Modern Reset & Base Styles */
 *,
 *::before,
 *::after {
@@ -47,7 +46,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Add subtle noise texture overlay */
 body::before {
   content: '';
   position: fixed;
@@ -61,7 +59,6 @@ body::before {
   opacity: 0.5;
 }
 
-/* Modern Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Inter", "Archivo Black", sans-serif;
   font-weight: 700;
@@ -100,7 +97,6 @@ p {
   margin: 0 0 var(--space-lg) 0;
 }
 
-/* Glass Card Component */
 .glass-card {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-backdrop);
@@ -129,7 +125,6 @@ p {
   border-color: rgba(6, 182, 212, 0.3);
 }
 
-/* Modern Container */
 .container {
   width: 90%;
   max-width: 1200px;
@@ -137,7 +132,6 @@ p {
   padding: 0 var(--space-lg);
 }
 
-/* Modern Button Styles */
 .btn-modern {
   display: inline-flex;
   align-items: center;
@@ -182,7 +176,6 @@ p {
   transform: translateY(0);
 }
 
-/* Animated Background Particles */
 .particles {
   position: fixed;
   top: 0;
@@ -197,7 +190,6 @@ p {
 .particle {
   position: absolute;
   border-radius: 50%;
-  /* Removed float animation to allow JS control */
   transform: translateZ(0);
 }
 
@@ -229,7 +221,6 @@ p {
   animation: cloudFloat 8s ease-in-out infinite;
 }
 
-/* Hide cloud particles when in dark theme to avoid visible clouds at night */
 :root[data-theme="dark"] .cloud-particle,
 :root[data-theme="dark"] .cloud-stroke {
   opacity: 0 !important;
@@ -253,7 +244,52 @@ p {
   66% { transform: scale(0.9); opacity: 0.3; }
 }
 
-/* Responsive Media Queries */
+.shooting-star {
+  position: fixed;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.8),
+              0 0 12px 4px rgba(6, 182, 212, 0.6);
+  z-index: 5;
+  pointer-events: none;
+  animation: shootingStar 2s ease-out forwards;
+  --end-x: 300px;
+  --end-y: 300px;
+  --angle: -45deg;
+}
+
+.shooting-star::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.9) 0%, 
+    rgba(255, 255, 255, 0.6) 30%,
+    rgba(6, 182, 212, 0.4) 70%,
+    rgba(255, 255, 255, 0) 100%); 
+  transform-origin: left center;
+  transform: translate(0%, -50%) rotate(calc(var(--angle) + 180deg));
+}
+
+@keyframes shootingStar {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--end-x), var(--end-y));
+    opacity: 0;
+  }
+}
+
 @media only screen and (min-width: 1024px) {
   .web-content {
     width: 85%;
@@ -281,7 +317,6 @@ p {
   }
 }
 
-/* Loading Animation */
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.5; }
@@ -291,7 +326,6 @@ p {
   animation: pulse 2s ease-in-out infinite;
 }
 
-/* Simple skeleton placeholders */
 .skeleton {
   background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.06), rgba(255,255,255,0.03));
   border-radius: var(--radius-lg);
@@ -305,7 +339,6 @@ p {
 .skeleton .s-line.badges { height: 48px; width: 100%; }
 .skeleton .s-line.tab { height: 40px; width: 100%; }
 
-/* Utility Classes */
 .text-gradient {
   background: var(--gradient-primary);
   -webkit-background-clip: text;
@@ -325,7 +358,6 @@ p {
   animation: fadeIn var(--transition-slow) ease-out forwards;
 }
 
-/* Ensure main sections are never hidden */
 #about, #experience {
   opacity: 1 !important;
   visibility: visible !important;
@@ -358,7 +390,6 @@ section#about, section#experience {
   }
 }
 
-/* Scroll Reveal Animation */
 .reveal-element {
   opacity: 0;
   transform: translateY(50px);
@@ -370,7 +401,6 @@ section#about, section#experience {
   transform: translateY(0);
 }
 
-/* Interactive skill bar animation */
 .skill-progress {
   width: 100%;
   height: 8px;
@@ -399,7 +429,6 @@ section#about, section#experience {
   100% { background-position: 200px 0; }
 }
 
-/* Pulse animation for CTAs */
 .pulse {
   animation: pulse-animation 2s infinite;
 }
@@ -410,7 +439,6 @@ section#about, section#experience {
   100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0); }
 }
 
-/* Enhanced focus states for accessibility */
 *:focus-visible {
   outline: 2px solid var(--color-link);
   outline-offset: 2px;

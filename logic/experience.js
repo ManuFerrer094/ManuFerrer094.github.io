@@ -5,11 +5,9 @@ fetch('texts.json')
   .then(data => {
     const expData = data.experiences;
     
-    // Update section title and description
     updateElementContent('#experience .section-title', expData.title);
     updateElementContent('#experience .section-description', expData.description);
     
-    // Generate Timeline
     const timelineContainer = document.getElementById('experienceTimeline');
     if (timelineContainer && expData.items) {
       timelineContainer.innerHTML = expData.items.map((item, index) => `
@@ -31,7 +29,6 @@ fetch('texts.json')
         </div>
       `).join('');
       
-      // Add intersection observer for animation
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -46,11 +43,9 @@ fetch('texts.json')
         observer.observe(item);
       });
 
-      // Observer to mark the timeline item that is centered in the viewport as "active"
       const activeObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            // remove active from other items
             document.querySelectorAll('.timeline-item.active').forEach(i => {
               if (i !== entry.target) i.classList.remove('active');
             });
@@ -63,7 +58,6 @@ fetch('texts.json')
 
       items.forEach(item => activeObserver.observe(item));
       
-      // Remove skeleton if present
       const expSection = document.getElementById('experience');
       if (expSection) {
         const skeleton = expSection.querySelector('.skeleton');

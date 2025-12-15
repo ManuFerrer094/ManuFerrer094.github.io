@@ -5,11 +5,9 @@ fetch('texts.json')
   .then(data => {
     const aboutData = data.about;
     
-    // Update title and description
     updateElementContent('#about .section-title', aboutData.title);
     updateElementContent('#about .about-description', aboutData.description);
     
-    // Generate Tech Stack Cards with Categories
     const stackGrid = document.getElementById('techStack');
     if (stackGrid && aboutData.stackCategories) {
       const iconMap = {
@@ -58,14 +56,12 @@ fetch('texts.json')
         `;
       }).join('');
 
-      // Add click handlers for accordion
       document.querySelectorAll('.stack-card-header').forEach(header => {
         header.addEventListener('click', function() {
           const card = this.parentElement;
           const content = card.querySelector('.stack-card-content');
           const arrow = this.querySelector('.stack-card-arrow');
           
-          // Toggle active
           card.classList.toggle('active');
           
           if (card.classList.contains('active')) {
@@ -78,7 +74,6 @@ fetch('texts.json')
         });
       });
 
-      // Open first card by default
       const firstCard = document.querySelector('.stack-card');
       if (firstCard) {
         firstCard.classList.add('active');
@@ -89,7 +84,6 @@ fetch('texts.json')
       }
     }
     
-    // Remove skeleton and show content
     const aboutSection = document.querySelector('#about');
     if (aboutSection) {
       const skeleton = aboutSection.querySelector('.about-skeleton');

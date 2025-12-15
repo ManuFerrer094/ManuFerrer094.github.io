@@ -1,4 +1,3 @@
-/* Modern Floating Navbar */
 .navbar {
   position: fixed !important;
   top: var(--space-lg);
@@ -6,7 +5,6 @@
   transform: translateX(-50%);
   width: calc(100% - var(--space-2xl));
   max-width: 1200px;
-  /* use theme-aware header background (slight transparency) */
   background: var(--header-bg) !important;
   backdrop-filter: var(--glass-backdrop);
   -webkit-backdrop-filter: var(--glass-backdrop);
@@ -87,7 +85,6 @@ html[data-theme="dark"] .theme-icon-dark,
   transform: rotate(90deg) scale(0.5);
 }
 
-/* Light theme - show moon icon */
 html[data-theme="light"] .theme-icon-light {
   opacity: 0;
   transform: rotate(-90deg) scale(0.5);
@@ -98,7 +95,6 @@ html[data-theme="light"] .theme-icon-dark {
   transform: rotate(0deg) scale(1);
 }
 
-/* Navbar color overrides for light theme (ensure header appears light) */
 html[data-theme="light"] .navbar {
   background: var(--header-bg) !important;
   border-color: rgba(0,0,0,0.06);
@@ -116,14 +112,13 @@ html[data-theme="light"] .navbar-toggler {
   color: var(--color-text) !important;
 }
 
-/* Ensure header download link aligns with other nav items */
 .nav-link#downloadLink {
   display: inline-flex;
   align-items: center;
   gap: var(--space-xs);
 }
 
-/* Mobile Responsive */
+
 @media (max-width: 991px) {
   .navbar {
     width: calc(100% - var(--space-lg));

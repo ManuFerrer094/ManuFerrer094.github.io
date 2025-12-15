@@ -1,7 +1,3 @@
-/* ========================================
-   MODERN NAVIGATION - Glassmorphic Design
-   ======================================== */
-
 .modern-header {
   position: fixed;
   top: 0;
@@ -38,7 +34,6 @@
   gap: 40px;
 }
 
-/* Brand Logo */
 .nav-brand {
   font-size: 24px;
   font-weight: 900;
@@ -63,7 +58,6 @@
   background-clip: text;
 }
 
-/* Navigation Menu */
 .nav-menu {
   display: flex;
   align-items: center;
@@ -112,7 +106,6 @@
   transform: scaleX(1);
 }
 
-/* Navigation Actions */
 .nav-actions {
   display: flex;
   align-items: center;
@@ -141,7 +134,6 @@
   transform: translateY(-2px);
 }
 
-/* Theme Toggle Button */
 .theme-toggle-btn {
   width: 40px;
   height: 40px;
@@ -187,7 +179,6 @@
   display: none;
 }
 
-/* CV Download Button */
 .btn-cv {
   display: inline-flex;
   align-items: center;
@@ -226,7 +217,6 @@
   left: 100%;
 }
 
-/* Mobile Navigation Toggle */
 .nav-toggle {
   display: none;
   width: 40px;
@@ -285,7 +275,7 @@
   top: 0;
 }
 
-/* Responsive Design */
+
 @media (max-width: 1024px) {
   .nav-container {
     padding: 0 24px;

@@ -15,10 +15,7 @@ fetch('texts.json')
     })
     .catch(error => {
         console.error('Error cargando el archivo JSON:', error);
-        // Mostrar aviso visible para el usuario (ayuda al debugging cuando se abre via file://)
         try {
-            // Only write fallback messages if the sections are still empty to avoid
-            // overwriting content populated by other modules (helps race-condition cases).
             const aboutTitle = document.querySelector('#about h2');
             const aboutP = document.querySelector('#about .about-text p');
             if (aboutTitle && (!aboutTitle.textContent || aboutTitle.textContent.trim() === '')) {
@@ -35,7 +32,5 @@ fetch('texts.json')
             if (expP && (!expP.textContent || expP.textContent.trim() === '')) {
                 updateElementHTML('#experience .about-text p', '<em>No se ha podido cargar el contenido de experiencia. Abre la página via HTTP (ej. <code>http://localhost:8000</code>).</em>');
             }
-        } catch (e) {
-            // ignore if selectors not present
-        }
+        } catch (e) {}
     });

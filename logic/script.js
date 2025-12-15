@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
-  // Initialize theme system
   initializeTheme();
 
-  // Download button functionality
   const downloadButton = document.getElementById('downloadButton');
   const downloadLink = document.getElementById('downloadLink');
 
@@ -12,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  // Navbar scroll effect
   const navbar = document.querySelector('.modern-header');
   let lastScrollTop = 0;
 
@@ -30,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  // Mobile menu toggle
   const navToggle = document.getElementById('navToggle');
   const navMenu = document.getElementById('navMenu');
   
@@ -41,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function() {
       document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
     });
 
-    // Close menu when clicking on a link
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', function() {
         navToggle.classList.remove('active');
@@ -50,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
 
-    // Close menu when clicking outside
     document.addEventListener('click', function(event) {
       if (!navMenu.contains(event.target) && !navToggle.contains(event.target) && navMenu.classList.contains('active')) {
         navToggle.classList.remove('active');
@@ -60,14 +54,13 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  // Smooth scrolling for navigation links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
       
       if (target) {
-        const offsetTop = target.offsetTop - 100; // Account for fixed navbar
+        const offsetTop = target.offsetTop - 100;
         
         window.scrollTo({
           top: offsetTop,
@@ -77,7 +70,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  // Add scroll reveal animation only for projects (not about/experience sections)
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -87,13 +79,11 @@ document.addEventListener("DOMContentLoaded", function() {
     entries.forEach(entry => {
       if (entry.isIntersecting && !entry.target.classList.contains('fade-in')) {
         entry.target.classList.add('fade-in');
-        // Stop observing this element once it's been animated
         observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
 
-  // Only observe project elements, not about-stack or experience elements
   document.querySelectorAll('.project').forEach(el => {
     const parentAbout = el.closest('#about');
     const parentExperience = el.closest('#experience');
@@ -103,7 +93,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
   
-  // Ensure main sections are always visible after DOM is loaded
   setTimeout(() => {
     const aboutSection = document.getElementById('about');
     const experienceSection = document.getElementById('experience');
@@ -119,29 +108,24 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }, 100);
 
-  // Typing text rotator
   initTypingRotator(["Frontend Developer", "EX IFS Developer", "Turing AI Developer"], '.typing-text');
 
-  // Create floating particles
   createLoadingSkeleton();
   createFloatingParticles();
 
-  // Ensure particles reflect any recent theme/variable changes
   setTimeout(() => {
     recreateParticles();
   }, 200);
 
-  // Add hover effects to tech stack images
+  initShootingStars();
+
   addTechStackEffects();
 });
 
-// Theme management functions
 function initializeTheme() {
-  // Get saved theme or default to dark
   const savedTheme = localStorage.getItem('theme') || 'dark';
   applyTheme(savedTheme);
   
-  // Set up theme toggle button
   const themeToggle = document.getElementById('themeToggle');
   if (themeToggle) {
     themeToggle.addEventListener('click', toggleTheme);
@@ -158,9 +142,58 @@ function toggleTheme() {
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   recreateParticles();
+  
+  initShootingStars();
 }
 
-// Interactive Particle System
+let shootingStarInterval = null;
+
+function initShootingStars() {
+  if (shootingStarInterval) {
+    clearInterval(shootingStarInterval);
+    shootingStarInterval = null;
+  }
+
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+  
+  if (currentTheme === 'dark') {
+    setTimeout(createShootingStar, 1000);
+    
+    shootingStarInterval = setInterval(createShootingStar, 7000);
+  }
+}
+
+function createShootingStar() {
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+  if (currentTheme !== 'dark') return;
+
+  const star = document.createElement('div');
+  star.className = 'shooting-star';
+  
+  const startX = Math.random() * window.innerWidth;
+  const startY = Math.random() * (window.innerHeight * 0.4);
+  
+  star.style.left = startX + 'px';
+  star.style.top = startY + 'px';
+  
+  const angle = -30 - (Math.random() * 120);
+  const angleRad = (angle * Math.PI) / 180;
+  
+  const distance = 300 + Math.random() * 200;
+  const endX = Math.cos(angleRad) * distance;
+  const endY = Math.sin(angleRad) * distance;
+  
+  star.style.setProperty('--end-x', endX + 'px');
+  star.style.setProperty('--end-y', endY + 'px');
+  star.style.setProperty('--angle', angle + 'deg');
+  
+  document.body.appendChild(star);
+  
+  setTimeout(() => {
+    star.remove();
+  }, 2000);
+}
+
 let particlesArray = [];
 let mouse = { x: null, y: null, radius: 250 };
 
@@ -180,26 +213,22 @@ class Particle {
     }
     
     update() {
-        // Calculate distance between mouse and particle
         let dx = mouse.x - this.x;
         let dy = mouse.y - this.y;
         let distance = Math.sqrt(dx*dx + dy*dy);
         
         if (distance < mouse.radius) {
-            // Repulsion force (Push away effect)
             let forceDirectionX = dx / distance;
             let forceDirectionY = dy / distance;
             let maxDistance = mouse.radius;
             let force = (maxDistance - distance) / maxDistance;
             
-            // Move away from mouse (inverted signs)
             let directionX = forceDirectionX * force * this.density;
             let directionY = forceDirectionY * force * this.density;
             
             this.x -= directionX;
             this.y -= directionY;
         } else {
-            // Return to base position (Elastic effect)
             if (this.x !== this.baseX) {
                 let dx = this.x - this.baseX;
                 this.x -= dx/25;
@@ -210,7 +239,6 @@ class Particle {
             }
         }
         
-        // Apply transformation relative to base position
         let translateX = this.x - this.baseX;
         let translateY = this.y - this.baseY;
         
@@ -248,14 +276,12 @@ function createFloatingParticles() {
     const particle = document.createElement('div');
     particle.className = 'particle'; 
     
-    // Random position
     const x = Math.random() * window.innerWidth;
     const y = Math.random() * window.innerHeight;
     
     particle.style.left = x + 'px';
     particle.style.top = y + 'px';
     
-    // Create inner element for CSS animations (rotate/scale)
     const inner = document.createElement('div');
     inner.className = isLightMode ? 'cloud-particle' : 'star-particle';
     inner.style.width = '100%';
@@ -312,18 +338,15 @@ function createFloatingParticles() {
     particle.appendChild(inner);
     particlesContainer.appendChild(particle);
     
-    // Add to physics system (density affects speed)
     particlesArray.push(new Particle(x, y, particle, (Math.random() * 15) + 5));
   }
   
-  // Start animation loop if not already running
   if (!window.particleAnimationRunning) {
       window.particleAnimationRunning = true;
       animateParticles();
   }
 }
 
-// Create simple loading skeletons for about and experience until content arrives
 function createLoadingSkeleton() {
   const about = document.getElementById('about');
   if (about && !about.querySelector('.skeleton')) {
@@ -352,7 +375,6 @@ function createLoadingSkeleton() {
   }
 }
 
-// Add interactive effects to tech stack images
 function addTechStackEffects() {
   document.querySelectorAll('.about-stack img').forEach(img => {
     img.addEventListener('mouseenter', function() {
@@ -365,14 +387,11 @@ function addTechStackEffects() {
   });
 }
 
-// Add loading states and error handling
 window.addEventListener('load', function() {
-  // Remove loading states
   document.querySelectorAll('.loading').forEach(el => {
     el.classList.remove('loading');
   });
 
-  // Add entrance animations
   setTimeout(() => {
     document.querySelectorAll('.slide-up').forEach((el, index) => {
       setTimeout(() => {
@@ -383,7 +402,6 @@ window.addEventListener('load', function() {
   }, 300);
 });
 
-// Handle navbar collapse on mobile
 document.addEventListener('click', function(event) {
   const navbar = document.querySelector('.navbar-collapse');
   const toggler = document.querySelector('.navbar-toggler');
