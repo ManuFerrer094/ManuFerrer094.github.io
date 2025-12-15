@@ -85,7 +85,7 @@ fetch('./texts.json')
               imageUrl = `https://api.screenshot.rocks/in/pixels?url=${encodeURIComponent(repo.homepage)}&width=1200&height=2400&type=jpeg&quality=85`;
             } else {
               // Fallback: use a nice gradient placeholder
-              imageUrl = `https://dummyimage.com/1200x800/667eea/ffffff&text=${encodeURIComponent(repo.name.replace(/-/g, ' '))}`;
+              imageUrl = `https://dummyimage.com/1200x800/06b6d4/ffffff&text=${encodeURIComponent(repo.name.replace(/-/g, ' '))}`;
             }
 
             return {
