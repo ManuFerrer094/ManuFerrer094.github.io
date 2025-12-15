@@ -9,9 +9,9 @@ fetch('texts.json')
     updateElementContent('#about .section-title', aboutData.title);
     updateElementContent('#about .about-description', aboutData.description);
     
-    // Generate Tech Stack Grid
+    // Generate Tech Stack Cards with Categories
     const stackGrid = document.getElementById('techStack');
-    if (stackGrid && aboutData.stack) {
+    if (stackGrid && aboutData.stackCategories) {
       const iconMap = {
         'Angular': { cls: 'fa-brands fa-angular', color: '#dd0031' },
         'React': { cls: 'fa-brands fa-react', color: '#61dafb' },
@@ -20,28 +20,73 @@ fetch('texts.json')
         'CSS3': { cls: 'fa-brands fa-css3-alt', color: '#1572B6' },
         'TypeScript': { cls: 'fa-brands fa-js', color: '#3178c6' },
         'JavaScript': { cls: 'fa-brands fa-js', color: '#f7df1e' },
-        'Node': { cls: 'fa-brands fa-node-js', color: '#6cc24a' },
-        'Python': { cls: 'fa-brands fa-python', color: '#3776ab' },
-        'Java': { cls: 'fa-brands fa-java', color: '#007396' },
-        'Docker': { cls: 'fa-brands fa-docker', color: '#2496ed' },
-        'Git': { cls: 'fa-brands fa-git-alt', color: '#f05032' },
         'SQL': { cls: 'fa-solid fa-database', color: '#0f172a' },
         'MongoDB': { cls: 'fa-solid fa-leaf', color: '#47A248' },
       };
 
-      stackGrid.innerHTML = aboutData.stack.map(tech => {
-        const key = tech.replace(/\s+/g, '');
-        const map = iconMap[tech] || iconMap[key] || null;
-        const iconClass = map ? map.cls : 'fa-solid fa-code';
-        const iconColor = map ? map.color : 'var(--color-primary)';
+      const categories = [
+        { key: 'languages', title: 'Lenguajes', icon: 'fa-solid fa-code' },
+        { key: 'frameworks', title: 'Frameworks', icon: 'fa-solid fa-layer-group' },
+        { key: 'databases', title: 'Bases de Datos', icon: 'fa-solid fa-database' }
+      ];
+
+      stackGrid.innerHTML = categories.map((category, index) => {
+        const techs = aboutData.stackCategories[category.key] || [];
+        const techItems = techs.map(tech => {
+          const map = iconMap[tech] || { cls: 'fa-solid fa-code', color: 'var(--color-primary)' };
+          return `
+            <div class="tech-tag">
+              <i class="${map.cls}" style="color: ${map.color};"></i>
+              <span>${tech}</span>
+            </div>
+          `;
+        }).join('');
 
         return `
-          <div class="stack-item">
-            <i class="${iconClass} stack-icon" style="font-size: 32px; color: ${iconColor};"></i>
-            <span class="stack-name">${tech}</span>
+          <div class="stack-card">
+            <div class="stack-card-header" data-category="${category.key}">
+              <div class="stack-card-title">
+                <i class="${category.icon}"></i>
+                <h4>${category.title}</h4>
+              </div>
+              <i class="fa-solid fa-chevron-down stack-card-arrow"></i>
+            </div>
+            <div class="stack-card-content" id="${category.key}-content">
+              ${techItems}
+            </div>
           </div>
         `;
       }).join('');
+
+      // Add click handlers for accordion
+      document.querySelectorAll('.stack-card-header').forEach(header => {
+        header.addEventListener('click', function() {
+          const card = this.parentElement;
+          const content = card.querySelector('.stack-card-content');
+          const arrow = this.querySelector('.stack-card-arrow');
+          
+          // Toggle active
+          card.classList.toggle('active');
+          
+          if (card.classList.contains('active')) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            arrow.style.transform = 'rotate(180deg)';
+          } else {
+            content.style.maxHeight = '0';
+            arrow.style.transform = 'rotate(0deg)';
+          }
+        });
+      });
+
+      // Open first card by default
+      const firstCard = document.querySelector('.stack-card');
+      if (firstCard) {
+        firstCard.classList.add('active');
+        const firstContent = firstCard.querySelector('.stack-card-content');
+        const firstArrow = firstCard.querySelector('.stack-card-arrow');
+        if (firstContent) firstContent.style.maxHeight = firstContent.scrollHeight + 'px';
+        if (firstArrow) firstArrow.style.transform = 'rotate(180deg)';
+      }
     }
     
     // Remove skeleton and show content

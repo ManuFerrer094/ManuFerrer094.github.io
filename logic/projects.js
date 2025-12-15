@@ -81,11 +81,11 @@ fetch('./texts.json')
             // Determine image URL: Use screenshot of homepage if available, otherwise a consistent placeholder
             let imageUrl;
             if (repo.homepage && repo.homepage.startsWith('http')) {
-              // Use a screenshot service for live demos - requesting desktop viewport (1200px)
-              imageUrl = `https://image.thum.io/get/width/1200/crop/1200/800/noanimate/${repo.homepage}`;
+              // Use screenshot.rocks - free and reliable service
+              imageUrl = `https://api.screenshot.rocks/in/pixels?url=${encodeURIComponent(repo.homepage)}&width=1200&height=2400&type=jpeg&quality=85`;
             } else {
-              // Fallback for projects without live demo
-              imageUrl = `https://picsum.photos/seed/${repo.name}/600/400?grayscale&blur=2`; 
+              // Fallback: use a nice gradient placeholder
+              imageUrl = `https://dummyimage.com/1200x800/667eea/ffffff&text=${encodeURIComponent(repo.name.replace(/-/g, ' '))}`;
             }
 
             return {
@@ -117,8 +117,8 @@ fetch('./texts.json')
             
             projectGrid.innerHTML = projectsToShow.map((project, index) => `
               <article class="project-card slide-up" style="animation-delay: ${index * 100}ms">
-                <div class="project-image">
-                  <img src="${project.image}" alt="${project.name}" loading="lazy">
+                <div class="project-image project-image-scrollable">
+                  <img src="${project.image}" alt="${project.name}" loading="lazy" class="scrollable-screenshot">
                 </div>
                 <div class="project-content">
                   <h3 class="project-title">
