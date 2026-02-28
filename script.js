@@ -78,7 +78,7 @@ var API_CONFIG = {
         },
         normalize: function (response) {
             if (!Array.isArray(response)) return [];
-            // First element is metadata — skip it
+            // First element is metadata -- skip it
             var jobs = response.slice(1);
             return jobs.map(function (job) {
                 var salary = null;
