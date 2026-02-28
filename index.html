@@ -81,9 +81,10 @@
 
                 <!-- Location -->
                 <div>
-                    <label for="filterLocation" class="block text-sm font-medium mb-1">📍 Ubicación</label>
-                    <input id="filterLocation" type="text" placeholder="Ej: Spain, Remote, USA"
-                        class="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm focus:ring-2 focus:ring-indigo-500 outline-none transition-colors duration-200">
+                    <label class="block text-sm font-medium mb-1">📍 Ubicación</label>
+                    <div id="filterLocationList" class="filter-checkbox-list max-h-40 overflow-y-auto space-y-1 px-1">
+                        <span class="text-xs text-gray-400 dark:text-gray-500">Cargando...</span>
+                    </div>
                 </div>
 
                 <!-- Remote -->
@@ -98,9 +99,10 @@
 
                 <!-- Tags -->
                 <div>
-                    <label for="filterTags" class="block text-sm font-medium mb-1">🏷️ Tags / Industria</label>
-                    <input id="filterTags" type="text" placeholder="Ej: javascript, design"
-                        class="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm focus:ring-2 focus:ring-indigo-500 outline-none transition-colors duration-200">
+                    <label class="block text-sm font-medium mb-1">🏷️ Tags / Industria</label>
+                    <div id="filterTagsList" class="filter-checkbox-list max-h-40 overflow-y-auto space-y-1 px-1">
+                        <span class="text-xs text-gray-400 dark:text-gray-500">Cargando...</span>
+                    </div>
                 </div>
 
                 <!-- Salary -->
