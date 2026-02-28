@@ -45,6 +45,27 @@ th.sortable:hover {
     background-color: rgba(99, 102, 241, 0.1);
 }
 
+/* Filter checkbox list */
+.filter-checkbox-list {
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+.dark .filter-checkbox-list {
+    border-color: #4b5563;
+}
+.filter-checkbox-list label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.8125rem;
+    padding: 0.15rem 0;
+}
+.filter-checkbox-list label:hover {
+    color: #6366f1;
+}
+
 /* Line clamp utility */
 .line-clamp-2 {
     display: -webkit-box;

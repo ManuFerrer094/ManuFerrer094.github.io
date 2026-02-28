@@ -243,6 +243,7 @@ function handleFetchSuccess(config, data) {
     state.isLoading = false;
     state.allJobs = config.normalize(data);
     state.page = 1;
+    populateFilterCheckboxes();
     applyFilters();
     renderJobs();
     renderPagination();
@@ -259,11 +260,87 @@ function updateProxyNotice() {
 // ============================
 // FILTROS Y BÚSQUEDA
 // ============================
+function populateFilterCheckboxes() {
+    var locations = {};
+    var tags = {};
+
+    state.allJobs.forEach(function (job) {
+        var loc = (job.location || '').trim();
+        if (loc && loc !== 'No especificada') {
+            locations[loc] = true;
+        }
+        if (Array.isArray(job.tags)) {
+            job.tags.forEach(function (tag) {
+                var t = (tag || '').trim();
+                if (t) tags[t] = true;
+            });
+        }
+    });
+
+    var locationKeys = Object.keys(locations).sort(function (a, b) {
+        return a.toLowerCase().localeCompare(b.toLowerCase());
+    });
+    var tagKeys = Object.keys(tags).sort(function (a, b) {
+        return a.toLowerCase().localeCompare(b.toLowerCase());
+    });
+
+    var locationContainer = document.getElementById('filterLocationList');
+    if (locationContainer) {
+        if (locationKeys.length === 0) {
+            locationContainer.innerHTML = '<span class="text-xs text-gray-400 dark:text-gray-500">Sin datos</span>';
+        } else {
+            var html = '';
+            locationKeys.forEach(function (loc) {
+                var id = 'loc-' + loc.replace(/[^a-zA-Z0-9]/g, '_');
+                html += '<label><input type="checkbox" class="filter-location-cb accent-indigo-600" value="' + escapeHtml(loc) + '"> ' + escapeHtml(loc) + '</label>';
+            });
+            locationContainer.innerHTML = html;
+        }
+    }
+
+    var tagsContainer = document.getElementById('filterTagsList');
+    if (tagsContainer) {
+        if (tagKeys.length === 0) {
+            tagsContainer.innerHTML = '<span class="text-xs text-gray-400 dark:text-gray-500">Sin datos</span>';
+        } else {
+            var html = '';
+            tagKeys.forEach(function (tag) {
+                html += '<label><input type="checkbox" class="filter-tag-cb accent-indigo-600" value="' + escapeHtml(tag) + '"> ' + escapeHtml(tag) + '</label>';
+            });
+            tagsContainer.innerHTML = html;
+        }
+    }
+
+    // Attach change listeners to the new checkboxes
+    setupCheckboxListeners();
+}
+
+function getCheckedValues(className) {
+    var checked = [];
+    var checkboxes = document.querySelectorAll('.' + className + ':checked');
+    for (var i = 0; i < checkboxes.length; i++) {
+        checked.push(checkboxes[i].value.toLowerCase());
+    }
+    return checked;
+}
+
+function setupCheckboxListeners() {
+    var allCbs = document.querySelectorAll('.filter-location-cb, .filter-tag-cb');
+    for (var i = 0; i < allCbs.length; i++) {
+        allCbs[i].addEventListener('change', function () {
+            state.page = 1;
+            applyFilters();
+            renderJobs();
+            renderPagination();
+        });
+    }
+}
+
 function applyFilters() {
     var search = (document.getElementById('searchInput').value || '').toLowerCase().trim();
-    var location = (document.getElementById('filterLocation').value || '').toLowerCase().trim();
+    var selectedLocations = getCheckedValues('filter-location-cb');
     var remote = document.getElementById('filterRemote').value;
-    var tags = (document.getElementById('filterTags').value || '').toLowerCase().trim();
+    var selectedTags = getCheckedValues('filter-tag-cb');
     var salaryMin = parseFloat(document.getElementById('filterSalary').value) || 0;
 
     var jobs = state.allJobs.filter(function (job) {
@@ -275,16 +352,25 @@ function applyFilters() {
             var inLocation = (job.location || '').toLowerCase().indexOf(search) !== -1;
             if (!inTitle && !inCompany && !inTags && !inLocation) return false;
         }
-        // Location
-        if (location) {
-            if ((job.location || '').toLowerCase().indexOf(location) === -1) return false;
+        // Location (checkboxes)
+        if (selectedLocations.length > 0) {
+            var jobLoc = (job.location || '').toLowerCase();
+            var matchesLocation = selectedLocations.some(function (loc) {
+                return jobLoc.indexOf(loc) !== -1;
+            });
+            if (!matchesLocation) return false;
         }
         // Remote
         if (remote === 'remote' && !job.remote) return false;
         if (remote === 'onsite' && job.remote) return false;
-        // Tags
-        if (tags) {
-            var hasTag = job.tags.some(function (t) { return t.toLowerCase().indexOf(tags) !== -1; });
+        // Tags (checkboxes)
+        if (selectedTags.length > 0) {
+            var hasTag = job.tags.some(function (t) {
+                var tLower = t.toLowerCase();
+                return selectedTags.some(function (st) {
+                    return tLower.indexOf(st) !== -1;
+                });
+            });
             if (!hasTag) return false;
         }
         // Salary minimum
@@ -318,9 +404,13 @@ function applyFilters() {
 
 function clearFilters() {
     document.getElementById('searchInput').value = '';
-    document.getElementById('filterLocation').value = '';
+    // Uncheck all location checkboxes
+    var locCbs = document.querySelectorAll('.filter-location-cb');
+    for (var i = 0; i < locCbs.length; i++) locCbs[i].checked = false;
     document.getElementById('filterRemote').value = 'all';
-    document.getElementById('filterTags').value = '';
+    // Uncheck all tag checkboxes
+    var tagCbs = document.querySelectorAll('.filter-tag-cb');
+    for (var i = 0; i < tagCbs.length; i++) tagCbs[i].checked = false;
     document.getElementById('filterSalary').value = '';
     state.sortBy = null;
     state.page = 1;
@@ -728,8 +818,8 @@ function setupEventListeners() {
         }, 300));
     }
 
-    // Filters
-    var filterInputs = ['filterLocation', 'filterRemote', 'filterTags', 'filterSalary'];
+    // Filters (only remote and salary remain as traditional inputs)
+    var filterInputs = ['filterRemote', 'filterSalary'];
     filterInputs.forEach(function (id) {
         var el = document.getElementById(id);
         if (el) {
