@@ -292,7 +292,7 @@ function populateFilterCheckboxes() {
             var html = '';
             locationKeys.forEach(function (loc) {
                 var id = 'loc-' + loc.replace(/[^a-zA-Z0-9]/g, '_');
-                html += '<label><input type="checkbox" class="filter-location-cb accent-indigo-600" value="' + escapeHtml(loc) + '"> ' + escapeHtml(loc) + '</label>';
+                html += '<label for="' + id + '"><input type="checkbox" id="' + id + '" class="filter-location-cb accent-indigo-600" value="' + escapeHtml(loc) + '"> ' + escapeHtml(loc) + '</label>';
             });
             locationContainer.innerHTML = html;
         }
@@ -305,7 +305,8 @@ function populateFilterCheckboxes() {
         } else {
             var html = '';
             tagKeys.forEach(function (tag) {
-                html += '<label><input type="checkbox" class="filter-tag-cb accent-indigo-600" value="' + escapeHtml(tag) + '"> ' + escapeHtml(tag) + '</label>';
+                var id = 'tag-' + tag.replace(/[^a-zA-Z0-9]/g, '_');
+                html += '<label for="' + id + '"><input type="checkbox" id="' + id + '" class="filter-tag-cb accent-indigo-600" value="' + escapeHtml(tag) + '"> ' + escapeHtml(tag) + '</label>';
             });
             tagsContainer.innerHTML = html;
         }
